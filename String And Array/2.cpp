@@ -25,3 +25,39 @@ int main()
     return 0;
 }
 */
+
+#include<iostream>
+// always try to manipulate the string from the end
+void reverseString(char* str)
+{
+    // we can move to the end pointer of the char string then we can start swapping
+    // characters from the start of the string with the end of string until the pointers
+    // meet in middle.
+
+    char *end = str;
+    char temp;
+    if(str)
+    {
+        while (*end)// moving to the end of the string
+            ++end;
+        --end;// set one char back, since last char is null
+
+        // now swapping characters
+
+        while (str < end)
+        {
+            temp = *str;
+            *str++ = *end;
+            *end-- = temp;
+        }
+    }
+
+}
+int main()
+{
+    char str[200];
+    std::cin.getline(str, sizeof(str));
+    reverseString(str);
+    std::cout<<"Reverse is : "<<str<<std::endl;
+    return 0;
+}
