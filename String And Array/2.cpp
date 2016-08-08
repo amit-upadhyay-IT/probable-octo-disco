@@ -67,3 +67,9 @@ kept on increasing the str pointer and after that decreasing the end pointer, wh
 of the string. And right after, we printed out the string which starts somewhere from the middle in reverse order. So,
 I would suggest to print string inside the main function.
 */
+/*
+void rev(char* str)
+{
+    std::reverse(str, str + strlen(str));
+}
+*/
