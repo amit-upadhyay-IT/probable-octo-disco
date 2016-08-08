@@ -61,3 +61,9 @@ int main()
     std::cout<<"Reverse is : "<<str<<std::endl;
     return 0;
 }
+/*
+A common error can be done here is printing the string inside the reverseString() method. The reason for error  is that we
+kept on increasing the str pointer and after that decreasing the end pointer, which finally met somewhere at the middle
+of the string. And right after, we printed out the string which starts somewhere from the middle in reverse order. So,
+I would suggest to print string inside the main function.
+*/
