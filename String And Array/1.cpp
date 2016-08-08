@@ -1,5 +1,5 @@
 /*
- * Design an algo to determinal if a string has all unique characters or not
+ * Design an algo to determinal if a string has all unique characters or not. Don't use any additional data structures.
  * */
 #include<iostream>
 bool isUnique(std::string);
