@@ -40,3 +40,7 @@ int main()
     std::cout<<"New String Formed "<<std::endl<<str<<std::endl;
     return 0;
 }
+/*
+edit the string from end. here we are finding the space count and using that we are finding the new length of the char array
+and accordingly we are placing the values in the char array.
+*/
