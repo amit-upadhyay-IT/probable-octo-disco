@@ -7,7 +7,7 @@ perform basic string compression using the counts of repeated characters.
 std::string compressBad(std::string str)
 {
     std::string mystr = "";
-    int count = 1;
+    int count = 0;
     char last = str[0];
     for (int i = 0; i < str.length();++i)
     {
