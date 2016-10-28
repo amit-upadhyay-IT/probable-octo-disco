@@ -1,8 +1,8 @@
-public class FileProg
+public class Eight
 {
 	private String s1, s2;
 	
-	public FileProg(String s1, String s2)
+	public Eight(String s1, String s2)
 	{
 		this.setS1(s1);
 		this.setS2(s2);
@@ -17,7 +17,7 @@ public class FileProg
 		System.out.println("Enter second string");
 		String s2 = scanner.nextLine();
 		
-		FileProg classObject = new FileProg(s1, s2);
+		Eight classObject = new Eight(s1, s2);
 		
 		
 		boolean b = classObject.isRotation(s1, s2);
@@ -55,7 +55,7 @@ public class FileProg
 	
 	public boolean isRotation(String s1, String s2)
 	{
-		//FileProg obj = new FileProg(s1, s2);
+		//Eight obj = new Eight(s1, s2);
 		String s1s1 = s1.concat(s1);
 		return s1s1.contains(s2);
 		//return (obj.isSubString(s1s1, s2));
