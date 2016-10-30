@@ -1,3 +1,7 @@
+/*
+check if one string is rotation of other string using only one call to isSubstring() method.
+*/
+
 #include<iostream>
 
 bool isSubstring(std::string, std::string);
