@@ -1,4 +1,4 @@
-// write prog to read 15 integers and print sum of only +ve integers.
+
 #include<stdio.h>
 #include<math.h>
 
