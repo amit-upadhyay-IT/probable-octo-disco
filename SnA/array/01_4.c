@@ -25,3 +25,6 @@ int main()
     show_pairs(arr, n, x);
     return 0;
 }
+
+// T.C = O(n) -> works for unsorted array too.
+// S.C = O(n) -> for hashtable
