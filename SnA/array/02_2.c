@@ -45,3 +45,6 @@ int main()
     printf("\n");
     return 0;
 }
+
+// T.C = O(log n)
+// S.C = O(1)
