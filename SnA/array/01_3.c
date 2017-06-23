@@ -33,3 +33,6 @@ void check_pair(int *arr, int n, int x)
         }
     }
 }
+
+// T.C = O(n)
+// S.C = O(1)
