@@ -37,3 +37,6 @@ void check_pair(int *arr, int n, int x)
          if (binary_search(arr, x-arr[i], 0, n-1))
             printf("(%d , %d)", arr[i], x-arr[i]);
 }
+
+// T.C = O(n log n)
+// S.C = O(1)
