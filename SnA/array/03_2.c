@@ -39,3 +39,6 @@ int main()
     printf("\n result is %d \n", res);
     return 0;
 }
+
+// T.C = O(n)
+// S.C = O(n) for diff_arr
