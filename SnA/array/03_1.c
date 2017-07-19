@@ -1,27 +1,56 @@
+/*
+ * moore voting algo
+ * two steps: find major candidate, check if thats the majority or not
+ * */
 #include<stdio.h>
+#include<stdlib.h>
 
-int get_max_diff(int *arr, int n)
+int get_majority_candidate(int *arr, int n)
 {
-    int i, j, max_diff = 0;
+    int i;
+    int current_element = arr[0], element_vote = 1;
 
-    for (i = n-1; i >= 0; --i)
+    for (i = 1; i < n; ++i)
     {
-        for (j = i-1; j >= 0; --j)
+        if (arr[i] == current_element)
+            element_vote++;
+        else
         {
-            if (arr[i] - arr[j] > max_diff)
-                max_diff = arr[i] - arr[j];
+            // now two cases may aries, element_vote can be greater than 0 or can be 0; if it is 0
+            // then change the current_element to arr[i];
+            if (element_vote == 0)
+            {
+                 current_element = arr[i];
+                 element_vote++;
+            }
+            else
+                element_vote--;
         }
     }
-    return max_diff;
+    return current_element;
+}
+
+int check_if_major(int *arr, int n, int candidate)
+{
+    int i, count = 0;
+    for (i = 0; i < n; ++i)
+        if (arr[i] == candidate)
+            count++;
+    return (count > n/2)?1:0;
 }
 
 int main()
 {
-    int i, arr[100], n;
+    int *arr, n, i;
     scanf("%d", &n);
+    arr = (int*) malloc(n*sizeof(int));
     for (i = 0; i < n; ++i)
         scanf("%d", &arr[i]);
-
-    printf("\n%d is the maximum difference \n", get_max_diff(arr, n));
+    int majority_candidate = get_majority_candidate(arr, n);
+    int val = check_if_major(arr, n, majority_candidate);
+    if (val)
+        printf("\n%d is the majority candidate \n", majority_candidate);
+    else
+        printf("\nThere are no majority element in the array \n");
     return 0;
 }
