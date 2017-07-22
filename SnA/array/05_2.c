@@ -6,7 +6,7 @@
 
 int get_odd_occurred_element(int *arr, int n)
 {
-    int hash_set[1000] = {0}, i = 0;// no element can be greater then 1000
+    int hash_set[1000] = {0}, i;// no element can be greater then 1000
     for (i = 0; i < n; ++i)
     {
         hash_set[arr[i]]++;
