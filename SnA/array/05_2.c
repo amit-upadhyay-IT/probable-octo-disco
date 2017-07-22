@@ -33,3 +33,6 @@ int main()
         printf("\n No element occurred odd times\n");
     return 0;
 }
+
+// T.C = O(n)
+// S.C = O(n)
