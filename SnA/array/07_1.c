@@ -1,4 +1,5 @@
 #include<stdio.h>
+#include<limits.h>
 #include<stdlib.h>
 
 void input_array(int *arr, int n)
@@ -63,7 +64,7 @@ struct PairInfo
 
 struct PairInfo get_pair_info(int *arr, int n, struct PairInfo pair_info)
 {
-    int i, sum_so_far = 100000;// some maximum value of int
+    int i, sum_so_far = INT_MAX;// some maximum value of int
     int first_pos = 0, last_pos = n-1;
     while (first_pos < last_pos)
     {
