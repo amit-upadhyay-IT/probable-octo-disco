@@ -22,3 +22,6 @@ int main()
     show_triplets(arr, n, x);
     return 0;
 }
+
+//T.C = O(n^3)
+//S.C = O(1)
