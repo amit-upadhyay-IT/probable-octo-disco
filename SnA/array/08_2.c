@@ -61,5 +61,9 @@ int main()
     scanf("%d", &x);
     qsort(arr, n, sizeof(int), cmpnum);
     find_triplets(arr, n, x);
+    printf("\n");
     return 0;
 }
+
+// T.C = (n^2 log n)
+// S.C = O(1)
