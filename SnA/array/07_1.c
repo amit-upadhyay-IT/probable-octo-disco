@@ -113,3 +113,6 @@ int main()
     printf("\nThe elements are %d and %d\n", arr[pair_info.f_pos], arr[pair_info.l_pos]);
     return 0;
 }
+
+// T.C = O(n * log n)
+// S.C = O(1)
