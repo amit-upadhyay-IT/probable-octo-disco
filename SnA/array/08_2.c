@@ -36,7 +36,7 @@ int binary_search(int *arr, int n, int x)
          else
              first = mid+1;
     }
-    return -1;
+    return INT_MIN;
 }
 
 void find_triplets(int *arr, int n, int x)
@@ -47,7 +47,7 @@ void find_triplets(int *arr, int n, int x)
         {
             int req = x - (arr[i] + arr[j]);
             int val = binary_search(arr, n, req);
-            if (val != -1)
+            if (val != INT_MIN)
                 printf("(%d, %d, %d)", arr[i], arr[j], val);
         }
 }
