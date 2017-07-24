@@ -22,7 +22,7 @@ int cmpnum(const void *a, const void *b)
     return (*(int*)a - *(int*)b);
 }
 
-int binary_search(int *arr, int n, int x)
+int binary_search(int *arr, int n, int x)// I am searching from beginning index so thing will result in printing of same pair with different order
 {
     int i, mid, first, last;
     first = 0, last = n-1;
