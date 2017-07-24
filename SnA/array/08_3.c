@@ -61,3 +61,5 @@ int main()
     find_triplets(arr, n, x);
     return 0;
 }
+// T.C = O(N^2)
+// S.C = O(1)
