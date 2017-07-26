@@ -44,7 +44,7 @@ int get_first_1_occ(int *arr)
             i *= 2;
         }
         if (flag)
-            return binary_search_first(arr, i/2, i, 1);
+            return binary_search_first(arr, i/2, i+1, 1);
     }
     catch(const char* msg)
     {
