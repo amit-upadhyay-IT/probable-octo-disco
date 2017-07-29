@@ -18,6 +18,7 @@ void insert_at_beginning(struct node* head, int data)
     new_node->data = data;
     new_node->link = head;
     head = new_node;
+    printf("\n%x\n", head);
 }
 
 void traverse_ll(struct node* head)
@@ -35,6 +36,8 @@ int main()
     int i;
     struct node* head;
     int ch, data;
+    head = (struct node*)malloc(sizeof(struct node));
+    head ->data = 4;
     do
     {
         printf("\nEnter your choice : \n1.Insert at beginning\n2.Traverse\n");
