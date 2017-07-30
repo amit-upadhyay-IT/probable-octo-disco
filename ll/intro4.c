@@ -1,4 +1,4 @@
-//move last node to first
+// iterative approach to reverse ll
 #include<stdio.h>
 #include<stdlib.h>
 
