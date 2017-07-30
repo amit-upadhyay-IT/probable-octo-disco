@@ -46,6 +46,27 @@ struct node* insert_in_between(struct node* head, int data, int value)
     return head;
 }
 
+struct node* delete_from_beginning(struct node* head)
+{
+    if (head == NULL)// the linked list is empty and it has nothing to delete
+        return head;
+    /*
+    else if (head ->link == NULL)// ll has one node which needs to be deleted
+    {
+        free(head);
+        head = NULL;
+        return head;
+    }
+    */
+    else
+    {
+        struct node* temp = head;
+        head = head->link;
+        free(temp);
+        return head;
+    }
+}
+
 void traverse_ll(struct node* head)
 {
     struct node* temp = head;
@@ -63,7 +84,7 @@ int main()
     int ch, data;
     do
     {
-        printf("\nEnter your choice : \n1.Insert at beginning\n2.Insert at end\n3.Insert in between\n4.Traverse\n5.Exit\n");
+        printf("\nEnter your choice : \n1.Insert at beginning\n2.Insert at end\n3.Insert in between\n4.Traverse\n5.Delete from beginning\n8.Exit\n");
         scanf("%d", &ch);
         switch(ch)
         {
@@ -87,6 +108,9 @@ int main()
             case 4:
                 traverse_ll(head);
                 break;
+            case 5:
+                head = delete_from_beginning(head);
+                break;
         }
-    }while (ch != 5);
+    }while (ch != 8);
 }
