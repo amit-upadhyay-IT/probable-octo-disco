@@ -91,9 +91,16 @@ struct node* delete_from_middle(struct node* head, int x)
 {
     if (head == NULL)
         return NULL;
-    else if (head->link == NULL && head->data != x)
+    else if (head->link == NULL && head->data != x)// checks if ll has only one element and that is not the element to be deleted
     {
         printf("\n There is no such node\n");
+        return head;
+    }
+    else if (head->data == x)// to delete the first node of ll
+    {
+        struct node* temp = head;
+        head = head->link;
+        free(temp);
         return head;
     }
     else
@@ -102,7 +109,7 @@ struct node* delete_from_middle(struct node* head, int x)
         struct node* temp = head;
         while (temp->link->data != x)
         {
-            if (temp->link->link == NULL)
+            if (temp->link->link == NULL)// traversing of ll is over and yet we didn't found x
             {
                 flag = 1;
                 break;
@@ -111,7 +118,7 @@ struct node* delete_from_middle(struct node* head, int x)
         }
         if (flag)
         {
-            printf("\n There is no such element \n");
+            printf("\n there is no such element \n");
             return head;
         }
         struct node* t1 = temp->link;
