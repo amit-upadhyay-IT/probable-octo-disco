@@ -34,6 +34,18 @@ void insert_at_end(struct node* head, int data)
     new_node->link = NULL;
 }
 
+struct node* insert_in_between(struct node* head, int data, int value)
+{
+    struct node* temp = head;
+    while (temp->data != value)
+        temp = temp->link;
+    struct node* new_node = get_new_node();
+    new_node->link = temp->link;
+    temp->link = new_node;
+    new_node->data = data;
+    return head;
+}
+
 void traverse_ll(struct node* head)
 {
     struct node* temp = head;
@@ -46,12 +58,12 @@ void traverse_ll(struct node* head)
 
 int main()
 {
-    int i;
+    int i, value;
     struct node* head;
     int ch, data;
     do
     {
-        printf("\nEnter your choice : \n1.Insert at beginning\n2.Insert at end\n3.Traverse\n");
+        printf("\nEnter your choice : \n1.Insert at beginning\n2.Insert at end\n3.Insert in between\n4.Traverse\n5.Exit\n");
         scanf("%d", &ch);
         switch(ch)
         {
@@ -66,8 +78,15 @@ int main()
                 insert_at_end(head, data);
                 break;
             case 3:
+                printf("\nEnter the data\n");
+                scanf("%d", &data);
+                printf("\nEnter value after which you want to insert\n");
+                scanf("%d", &value);
+                head = insert_in_between(head, data, value);
+                break;
+            case 4:
                 traverse_ll(head);
                 break;
         }
-    }while (ch != 4);
+    }while (ch != 5);
 }
