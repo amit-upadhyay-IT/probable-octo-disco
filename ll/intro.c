@@ -67,6 +67,25 @@ struct node* delete_from_beginning(struct node* head)
     }
 }
 
+void delete_from_end(struct node* head)
+{
+    if (head == NULL)
+        return;
+    else if(head -> link == NULL)// there is only one element in ll
+    {
+        free(head);
+        return NULL;
+    }
+    else
+    {
+         struct node* temp = head;
+         while (temp->link->link != NULL)
+             temp = temp->link;
+         free(temp->link);
+         temp->link = NULL;
+    }
+}
+
 void traverse_ll(struct node* head)
 {
     struct node* temp = head;
@@ -84,7 +103,7 @@ int main()
     int ch, data;
     do
     {
-        printf("\nEnter your choice : \n1.Insert at beginning\n2.Insert at end\n3.Insert in between\n4.Traverse\n5.Delete from beginning\n8.Exit\n");
+        printf("\nEnter your choice : \n1.Insert at beginning\n2.Insert at end\n3.Insert in between\n4.Traverse\n5.Delete from beginning\n6.Delete from end\n7.Delete from middle\n8.Exit\n");
         scanf("%d", &ch);
         switch(ch)
         {
@@ -110,6 +129,9 @@ int main()
                 break;
             case 5:
                 head = delete_from_beginning(head);
+                break;
+            case 6:
+                delete_from_end(head);
                 break;
         }
     }while (ch != 8);
