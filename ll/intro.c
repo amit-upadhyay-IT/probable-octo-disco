@@ -67,10 +67,10 @@ struct node* delete_from_beginning(struct node* head)
     }
 }
 
-void delete_from_end(struct node* head)
+struct node* delete_from_end(struct node* head)
 {
     if (head == NULL)
-        return;
+        return NULL;
     else if(head -> link == NULL)// there is only one element in ll
     {
         free(head);
@@ -78,11 +78,46 @@ void delete_from_end(struct node* head)
     }
     else
     {
-         struct node* temp = head;
-         while (temp->link->link != NULL)
-             temp = temp->link;
-         free(temp->link);
-         temp->link = NULL;
+        struct node* temp = head;
+        while (temp->link->link != NULL)
+            temp = temp->link;
+        free(temp->link);
+        temp->link = NULL;
+        return head;
+    }
+}
+
+struct node* delete_from_middle(struct node* head, int x)
+{
+    if (head == NULL)
+        return NULL;
+    else if (head->link == NULL && head->data != x)
+    {
+        printf("\n There is no such node\n");
+        return head;
+    }
+    else
+    {
+        int flag = 0;
+        struct node* temp = head;
+        while (temp->link->data != x)
+        {
+            if (temp->link->link == NULL)
+            {
+                flag = 1;
+                break;
+            }
+            temp = temp->link;
+        }
+        if (flag)
+        {
+            printf("\n There is no such element \n");
+            return head;
+        }
+        struct node* t1 = temp->link;
+        temp->link = temp->link->link;
+        free(t1);
+        return head;
     }
 }
 
@@ -100,7 +135,7 @@ int main()
 {
     int i, value;
     struct node* head;
-    int ch, data;
+    int ch, data, x;
     do
     {
         printf("\nEnter your choice : \n1.Insert at beginning\n2.Insert at end\n3.Insert in between\n4.Traverse\n5.Delete from beginning\n6.Delete from end\n7.Delete from middle\n8.Exit\n");
@@ -131,7 +166,12 @@ int main()
                 head = delete_from_beginning(head);
                 break;
             case 6:
-                delete_from_end(head);
+                head = delete_from_end(head);
+                break;
+            case 7:
+                printf("\nEnter value you want to delete\n");
+                scanf("%d", &x);
+                head = delete_from_middle(head, x);
                 break;
         }
     }while (ch != 8);
