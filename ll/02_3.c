@@ -67,3 +67,5 @@ int main()
     printf("\nThe middle node element is %d \n", mid_node->data);
     return 0;
 }
+// T.C = O(n)
+// S.C = O(1)
