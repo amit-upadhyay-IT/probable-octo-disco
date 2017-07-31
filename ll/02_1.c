@@ -9,7 +9,7 @@ struct node
 
 struct node* insert_end(struct node* head, int data)
 {
-    if (head == NULL)
+    if (head == NULL)// inserting node when there is no node before
     {
         struct node* t = (struct node*)malloc(sizeof(struct node));
         t->data = data;
@@ -40,11 +40,12 @@ void print_ll(struct node* head)
 int main()
 {
     int ch;
-    struct node* head;// = (struct node*)malloc(sizeof(struct node));
+    struct node* head;
+    scanf("%d", &ch);
     do
     {
-         scanf("%d", &ch);
          head = insert_end(head, ch);
+         scanf("%d", &ch);
     } while (ch != -1);
     printf("\n");
     print_ll(head);

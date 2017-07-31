@@ -22,8 +22,16 @@ struct node* insert_at_beginning(struct node* head, int data)
     return head;
 }
 
-void insert_at_end(struct node* head, int data)
+struct node* insert_at_end(struct node* head, int data)
 {
+    if (!head)// when no node are in ll
+    {
+         struct node* t = (struct node*)malloc(sizeof(struct node));
+         t->data= data;
+         t->link = NULL;
+         head = t;
+         return head;
+    }
     struct node* temp;
     temp = head;
     while (temp->link)
@@ -32,6 +40,7 @@ void insert_at_end(struct node* head, int data)
     temp->link = new_node;
     new_node->data = data;
     new_node->link = NULL;
+    return head;
 }
 
 struct node* insert_in_between(struct node* head, int data, int value)
@@ -157,7 +166,7 @@ int main()
             case 2:
                 printf("\nEnter the data\n");
                 scanf("%d", &data);
-                insert_at_end(head, data);
+                head = insert_at_end(head, data);
                 break;
             case 3:
                 printf("\nEnter the data\n");
