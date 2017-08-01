@@ -1,3 +1,8 @@
+/*
+ *brute force approach
+ *take first node and traverse entire list and see if the next of pointer of
+ *any node is containing the address of first node.
+ * */
 #include<stdio.h>
 #include<stdlib.h>
 
