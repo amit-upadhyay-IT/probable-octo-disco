@@ -67,7 +67,6 @@ int main()
 {
     int ch, k;
     struct node* head;
-    struct node* addresses[100];
     scanf("%d", &ch);
     do
     {
