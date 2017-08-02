@@ -47,19 +47,6 @@ void print_ll(struct node* head)
 
 struct node* get_intersect_point(struct node* head1, struct node* head2)
 {
-    struct node* temp1 = head1, *temp2;
-    while (temp1->next)
-    {
-        temp2 = head2;
-        while (temp2->next)
-        {
-            if (temp1 == temp2)
-                return temp1;
-            temp2 = temp2->next;
-        }
-        temp1 = temp1->next;
-    }
-    return NULL;
 }
 
 void make_linkage(struct node* head1, struct node* head2)
@@ -88,14 +75,5 @@ int main()
 
     make_linkage(head1, head2);
 
-    struct node* ret_val = get_intersect_point(head1, head2);
-    if (ret_val)
-        printf("\nThe two linked list intersect at %d node\n", ret_val->data);
-    else
-        printf("\nThere is no intersection between two linked list\n");
-
     return 0;
 }
-
-// T.C = O(m*n)
-// S.C = O(1)
