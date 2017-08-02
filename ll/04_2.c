@@ -59,6 +59,9 @@ int has_loops(struct node* head, struct node* addresses[])
         snprintf(add_arr, 15, "%d", temp);
         int add_val = char_to_int(add_arr);// address value in integer
         int hash_index = hash_function(add_val); // integer address value is hashed
+
+        if (addresses[hash_index])
+            return 1;
         addresses[hash_index] = temp;
         printf ("%d ", hash_index);
         temp = temp->next;
@@ -89,10 +92,13 @@ int main()
     head = insert_at_beginning(head, 35);
     print_ll(head);
 
-    //head->next->next->next->next = head->next;
+    head->next->next->next->next = head->next;
     printf("\n");
     int val = has_loops(head, addresses);
-    printf("\n");
+    if (val)
+        printf("\nThe linked list has loops\n");
+    else
+        printf("\nNo Loops found in Linked List\n");
     return 0;
 }
 
