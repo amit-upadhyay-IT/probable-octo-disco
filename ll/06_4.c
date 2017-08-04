@@ -76,16 +76,13 @@ struct node* get_intersect_point(struct node* head1, struct node* head2)
         {
             flag = 1;
             temp = head1;
-            while (temp->next)
-                temp = temp->next;
         }
         else
         {
             flag = 2;
             temp = head2;
-            while (temp->next)
-                temp = temp->next;
         }
+        temp = temp->next;
         diff--;
     }
 
@@ -125,10 +122,17 @@ int main()
     insert_at_end(&head1, 1);
     insert_at_end(&head2, 2);
 
+    printf("\nBefore linkage\n");
+
     print_ll(head1);
     print_ll(head2);
 
     make_linkage(head1, head2);
+
+    printf("\nAfter linkage\n");
+
+    print_ll(head1);
+    print_ll(head2);
 
     struct node* ret_val = get_intersect_point(head1, head2);
     if (ret_val)
