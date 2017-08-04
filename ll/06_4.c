@@ -1,6 +1,7 @@
 /*
  *find intersect point of two LL
- * using brute force approach
+ * find length of two linked lists, see which is major, go upto the difference node in the major ll
+ * and then start iterating over both the ll's , if their address seems to be same just return the address from function.
  */
 #include<stdio.h>
 #include<stdlib.h>
