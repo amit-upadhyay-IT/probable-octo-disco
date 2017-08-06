@@ -58,7 +58,7 @@ class Queue
 
             int count = (rear+N-front)%N + 1;
             std::cout<<"Queue       : ";
-            for(int i = 0; i <count; i++)
+            for(int i = 1; i <=count; i++)
             {
                 int index = (front+i) % N; // Index of element while travesing circularly from front
                 std::cout<<queue[index]<<" ";
