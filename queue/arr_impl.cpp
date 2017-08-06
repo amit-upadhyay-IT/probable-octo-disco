@@ -47,12 +47,23 @@ class Queue
 
         void print_queue()
         {
+            /*
             int k = (front+1) % N;
             while (k <= rear)
             {
                 std::cout<<queue[k]<<" ";
                 k = (k+1) % N;
             }
+            */
+
+            int count = (rear+N-front)%N + 1;
+            std::cout<<"Queue       : ";
+            for(int i = 0; i <count; i++)
+            {
+                int index = (front+i) % N; // Index of element while travesing circularly from front
+                std::cout<<queue[index]<<" ";
+            }
+            std::cout<<"\n\n";
         }
 };
 
@@ -69,10 +80,10 @@ int main()
     q1.enqueue(70);
     q1.enqueue(80);
     q1.enqueue(90);
-    //q1.enqueue(100);
+    q1.enqueue(100);
     q1.dequeue();
-    //q1.enqueue(110);
-    //q1.enqueue(120);
+    q1.enqueue(110);
+    q1.enqueue(120);
 
     q1.print_queue();
 
