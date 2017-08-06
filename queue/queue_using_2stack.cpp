@@ -56,17 +56,56 @@ class Stack
         }
 };
 
+class Queue
+{
+    public:
+        void enqueue(Stack &s, int item)
+        {
+            s.push(item);
+        }
+
+        int dequeue(Stack s1, Stack s2)
+        {
+            int x = 0;
+            if (s2.is_empty())
+            {
+                if (s1.is_empty())
+                {
+                    std::cout<<"Queue is empty (Underflow)\n";
+                    return x;
+                }
+                else // s1 has some elements, so we need to pop up those and push to s2
+                {
+                    while (!s1.is_empty())
+                    {
+                        int x = s1.Top(); s1.pop();
+                        s2.push(x);
+                    }
+                }
+            }
+            x = s2.Top();
+            s2.pop();
+            return x;
+        }
+};
+
 int main()
 {
-    Stack s1;
-    s1.push(10);
-    s1.push(20);
-    s1.push(30);
+    Queue q;
+    Stack s1, s2;
+    /*
+    q.enqueue(s1, 10);
+    q.enqueue(s1, 20);
+    q.enqueue(s1, 30);
+    q.enqueue(s1, 40);
+    q.enqueue(s1, 50);
 
     s1.print_stack();
 
-    s1.pop();
-    s1.print_stack();
-    //s1.pop();
-    //s1.print_stack();
+    std::cout<<q.dequeue(s1, s2)<<" ";
+
+    */
+
+    std::cout<<std::endl;
+    return 0;
 }
