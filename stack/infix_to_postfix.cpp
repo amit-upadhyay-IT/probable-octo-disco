@@ -65,6 +65,7 @@ class Stack
         }
 };
 
+// till this point we don't need to check associativity because all these op used are left associative.
 int get_precedence(char op)
 {
     switch(op)
@@ -84,7 +85,7 @@ int get_precedence(char op)
 int main()
 {
     Stack s1;
-    char arr[100] = "a+b*c";
+    char arr[100] = "(a+b)*c";
 
     for (int i = 0; i < strlen(arr); ++i)
     {
