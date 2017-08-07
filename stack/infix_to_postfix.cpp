@@ -82,20 +82,19 @@ int get_precedence(char op)
     }
 }
 
-int main()
+void infix_to_postfix(char *arr, Stack s1, char *exp)
 {
-    Stack s1;
-    char arr[100] = "(a+b)*c";
-
+    int k = 0;
     for (int i = 0; i < strlen(arr); ++i)
     {
         if (isalpha(arr[i]))
-            std::cout<<arr[i];
+            exp[k++] = arr[i]; //std::cout<<arr[i];
         else if (arr[i] == ')')
         {
             while (s1.Top() != '(')
             {
-                std::cout<<s1.Top();
+                exp[k++] = s1.Top();
+                //std::cout<<s1.Top();
                 s1.pop();
             }
             s1.pop(); // for removing '('
@@ -105,16 +104,25 @@ int main()
             if (s1.is_empty()==0)
                 while (get_precedence(s1.Top()) > get_precedence(arr[i]) && s1.Top() != '(')
                 {
-                    std::cout<<s1.Top(); s1.pop();
+                    exp[k++] = s1.Top(); s1.pop();
                 }
             s1.push(arr[i]);
         }
     }
     while (!s1.is_empty())
     {
-        std::cout<<s1.Top();
+        exp[k++] = s1.Top();
         s1.pop();
     }
+}
+
+int main()
+{
+    Stack s1;
+    char arr[100] = "(a+b)*c";
+    char exp[100];
+    infix_to_postfix(arr, s1, exp);
+    std::cout<<exp;
     std::cout<<std::endl;
     return 0;
 }
