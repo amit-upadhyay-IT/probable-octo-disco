@@ -12,11 +12,10 @@ struct petrolPump
 
 class Queue
 {
-    private:
+   public:
         struct petrolPump *p;
         int front, rear;
 
-    public:
         Queue()
         {
             front = rear = 0;
@@ -58,6 +57,7 @@ class Queue
         void print_queue()
         {
             int count = (rear+N-front) % N;
+            std::cout<<std::endl<<count<<std::endl;
             std::cout<<"Queue   ";
             for (int i = 1; i <= count; ++i)
             {
@@ -70,5 +70,23 @@ class Queue
 
 int main()
 {
+    Queue *q = new Queue();
+    int t, i = 1, n;
+    std::cin>>t;
+    int petrol, distance;
+    while (t--)
+    {
+        std::cin>>n;
+        printf("\nEnter petrol and distance\n");
+        while (n--)
+        {
+            std::cin>>petrol>>distance;
+            q->p[i].petrol = petrol; q->p[i].distance = distance;
+            q->enqueue(q->p[i]);
+            i++;
+        }
+
+    }
+    q->print_queue();
     return 0;
 }
