@@ -45,7 +45,8 @@ class Queue
             if (front == rear)
             {
                 std::cout<<"\n Queue is empty\n";
-                return NULL;
+                petrolPump pp; pp.petrol = -1; pp.distance = -1;
+                return pp;
             }
             else
             {
@@ -53,4 +54,21 @@ class Queue
                  return p[front];
             }
         }
+
+        void print_queue()
+        {
+            int count = (rear+N-front) % N;
+            std::cout<<"Queue   ";
+            for (int i = 1; i <= count; ++i)
+            {
+                int index = (front+i) % N;
+                std::cout<<p[index].distance<<" "<<p[index].petrol<<std::endl;
+            }
+            std::cout<<std::endl;
+        }
 };
+
+int main()
+{
+    return 0;
+}
