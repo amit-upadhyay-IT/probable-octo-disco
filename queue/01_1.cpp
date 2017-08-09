@@ -72,6 +72,10 @@ int check_circular_tour(Queue *q, int cnt)
 {
     return 0;
 }
+
+/*
+ * INCOMPLETE
+ * */
 int main()
 {
     Queue *q = new Queue();
