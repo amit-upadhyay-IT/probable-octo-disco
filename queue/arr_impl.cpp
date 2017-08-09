@@ -47,15 +47,6 @@ class Queue
 
         void print_queue()
         {
-            /*
-            int k = (front+1) % N;
-            while (k <= rear)
-            {
-                std::cout<<queue[k]<<" ";
-                k = (k+1) % N;
-            }
-            */
-
             int count = (rear+N-front)%N;
             std::cout<<"Queue       : ";
             for(int i = 1; i <=count; i++)
