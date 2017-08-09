@@ -68,20 +68,26 @@ class Queue
         }
 };
 
+int check_circular_tour(Queue *q, int cnt)
+{
+    return 0;
+}
 int main()
 {
     Queue *q = new Queue();
-    int t, i = 1, n;
+    int t, i = 1, num;
     std::cin>>t;
     int petrol, distance;
     while (t--)
     {
-        std::cin>>n;
+        std::cin>>num;
+        int n = num;
         printf("\nEnter petrol and distance\n");
         while (n--)
         {
             std::cin>>petrol>>distance;
             q->p[i].petrol = petrol; q->p[i].distance = distance;
+            q->p[i].petrol = q->p[i].petrol - q->p[i].distance;
             q->enqueue(q->p[i]);
             i++;
         }
