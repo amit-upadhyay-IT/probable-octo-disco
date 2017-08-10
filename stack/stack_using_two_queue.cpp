@@ -2,7 +2,7 @@
 #include<iostream>
 #include<queue>
 
-void push(std::queue<int> q1, std::queue<int> q2, int item)
+void push(std::queue<int> &q1, std::queue<int> &q2, int item)
 {
     // insert in any of the empty queue
     if (q1.empty())
@@ -36,7 +36,7 @@ void push(std::queue<int> q1, std::queue<int> q2, int item)
     }
 }
 
-int pop(std::queue<int> q1, std::queue<int> q2)
+int pop(std::queue<int> &q1, std::queue<int> &q2)
 {
     if (!q1.empty())
     {
@@ -53,9 +53,34 @@ int pop(std::queue<int> q1, std::queue<int> q2)
     }
 }
 
+void print_queue(std::queue<int> q)
+{
+    if (!q.empty())
+    {
+        // we need to print q1
+        while (q.empty())
+        {
+            std::cout<<q.front()<<" ";
+            q.pop();
+        }
+    }
+    printf("\n");
+}
+
 int main()
 {
     std::queue<int> q1, q2;
+
+    push(q1, q2, 5);
+    push(q1, q2, 10);
+    push(q1, q2, 15);
+    push(q1, q2, 20);
+    push(q1, q2, 25);
+
+    print_queue(q1);
+    print_queue(q2);
+
+    std::cout<<std::endl<<pop(q1, q2)<<std::endl;
 
     return 0;
 }
