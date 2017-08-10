@@ -55,14 +55,11 @@ int pop(std::queue<int> &q1, std::queue<int> &q2)
 
 void print_queue(std::queue<int> q)
 {
-    if (!q.empty())
+    // we need to print q
+    while (!q.empty())
     {
-        // we need to print q1
-        while (q.empty())
-        {
-            std::cout<<q.front()<<" ";
-            q.pop();
-        }
+        std::cout<<q.front()<<" ";
+        q.pop();
     }
     printf("\n");
 }
@@ -77,8 +74,7 @@ int main()
     push(q1, q2, 20);
     push(q1, q2, 25);
 
-    print_queue(q1);
-    print_queue(q2);
+    print_queue(q1.empty()?q2:q1);
 
     std::cout<<std::endl<<pop(q1, q2)<<std::endl;
 
