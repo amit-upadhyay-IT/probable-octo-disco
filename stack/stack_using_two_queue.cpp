@@ -2,6 +2,7 @@
 #include<iostream>
 #include<queue>
 
+// takes O(n) time
 void push(std::queue<int> &q1, std::queue<int> &q2, int item)
 {
     // insert in any of the empty queue
@@ -36,6 +37,7 @@ void push(std::queue<int> &q1, std::queue<int> &q2, int item)
     }
 }
 
+// takes O(1) time
 int pop(std::queue<int> &q1, std::queue<int> &q2)
 {
     if (!q1.empty())
