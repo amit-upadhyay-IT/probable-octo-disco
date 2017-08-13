@@ -53,3 +53,5 @@ int main()
     return 0;
 }
 
+// T.C = O(n^2)
+// S.C = O(1)
