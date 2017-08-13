@@ -66,3 +66,5 @@ public class ProblemOne {
 
 }
 
+// T.C = O(n log n)
+// S.C = O(1)
