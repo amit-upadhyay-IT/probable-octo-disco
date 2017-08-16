@@ -66,5 +66,5 @@ public class ProblemOne {
 
 }
 
-// T.C = O(n log n)
+// T.C = O(n log n)-> for sorting
 // S.C = O(1)
