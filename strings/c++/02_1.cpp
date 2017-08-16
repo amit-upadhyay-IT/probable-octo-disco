@@ -1,3 +1,6 @@
+/*
+ * print unique characters in a string
+ * */
 #include<iostream>
 #include<cstring>
 
@@ -48,3 +51,6 @@ int main()
     print_unique_arr(unique_set);
     return 0;
 }
+
+// T.C = O(n)
+// S.C = O(n)
