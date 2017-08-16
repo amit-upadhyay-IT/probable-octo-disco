@@ -1,5 +1,7 @@
 /*
  * printing only unique characters in a string
+ * this is not a complete solution because here I am just printing elements, however I need to make a string or replace the same string
+ * next solution will have actual implementation.
  * */
 
 #include<iostream>
