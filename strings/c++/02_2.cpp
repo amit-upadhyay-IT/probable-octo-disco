@@ -36,3 +36,6 @@ int main()
     print_string(str, char_set);
     return 0;
 }
+
+// T.C = O(n)
+// S.C = O(1) -> creating hash for only 256 elements
