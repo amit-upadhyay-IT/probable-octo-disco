@@ -1,5 +1,9 @@
 /*
  * print unique characters in a string
+ * read char by char in string and insert them into an array
+ * before inserting them check if they are already present in that array
+ * if they are then don't insert otherwise insert.
+ * using hashmap would be even better
  * */
 #include<iostream>
 #include<cstring>
@@ -43,7 +47,7 @@ void print_unique_arr(char * unique_set)
 int main()
 {
     std::string str;
-    char unique_set[256] = {'\0'};
+    char unique_set[256] = {'\0'};//  initializing them with null is helpful because we don't need to take care for making the last character as null
 
     std::getline(std::cin, str);
 
