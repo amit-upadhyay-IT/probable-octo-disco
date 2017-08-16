@@ -26,3 +26,6 @@ int main()
     std::cout<<std::endl<<"The maximum count is "<<max_cnt<<std::endl;
     return 0;
 }
+
+//T.C = O(n)
+//S.C = O(1) // only array of 256 space is created
