@@ -6,7 +6,7 @@ void make_string_unique(char *str, int *char_set)
     char_set[str[0]] = 1;
     int i = 1, j = 1;
 
-    while (i < strlen(str))
+    while (j < strlen(str))// why is it working with i too?
     {
         while (char_set[str[j]] && j < strlen(str))
         {
