@@ -144,5 +144,8 @@ int main()
     if (search(root, 100))
         std::cout<<"100 is found\n";
 
+    root = remove(root, 40);
+    inorder(root);
+    std::cout<<std::endl;
     return 0;
 }
