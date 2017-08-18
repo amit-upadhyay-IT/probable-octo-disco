@@ -42,48 +42,45 @@ BSTnode* insert(BSTnode* root, int data)
 
 BSTnode* remove(BSTnode* root, int data)
 {
-	if (!root)
-		return NULL;
-	if (data < root->data)
-		root->left = remove(root->left, data);
-	else if (data > root->data)
-		root->right = remove(root->right, data);
+    if (!root)
+        return NULL;
+    if (data < root->data)
+        root->left = remove(root->left, data);
+    else if (data > root->data)
+        root->right = remove(root->right, data);
 
-	else
-	{
-		// the element is found now
-
-		// case 1: leaf element
-		if (!root->left && !root->right)
-		{
-			delete root; // root is now dangling pointer
-			root = NULL;
-			return root;
-		}
-		// case 2: with one child
-		else if (!root->left)
-		{
-			BSTnode* temp = root->right;
-			root = root->right->right;
-			delete temp;
-			return root;
-		}
-		else if (!root->right)
-		{
-			BSTnode* temp = root->left;
-			root = root->left->left; // or root = temp->left;
-			delete temp;
-			return root;
-		}
-		// case 3: with two children
-		else
-		{
-			BSTnode* inorder_successor = find_min(root->right);
-			root->data = inorder_successor->data;
-			root = remove(root->right, inorder_successor->data);
-			return root;
-		}
-	}
+    else
+    {
+        // the element is found now
+        // case 1: leaf element
+        if (!root->left && !root->right)
+        {
+            delete root; // root is now dangling pointer
+            root = NULL;
+        }
+        // case 2: with one child
+        else if (!root->left)
+        {
+            BSTnode* temp = root;
+            root = root->right;
+            delete temp;
+        }
+        else if (!root->right)
+        {
+            BSTnode* temp = root->left;
+            root = root->left->left; // or root = temp->left;
+            delete temp;
+            return root;
+        }
+        // case 3: with two children
+        // else
+        {
+            BSTnode* inorder_successor = find_min(root->right);
+            root->data = inorder_successor->data;
+            root = remove(root->right, inorder_successor->data);
+            return root;
+        }
+    }
 }
 
 bool search(BSTnode* root, int data)
