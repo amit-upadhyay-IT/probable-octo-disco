@@ -24,11 +24,21 @@ BSTnode* insert(BSTnode* root, int data)
         root = get_new_node(data);
     // case 2 when data is less than root
     else if (data < root->data)
-        root->left = get_new_node(data);
+        root->left = insert(root->left, data);
     // case 3 when data is greater than root
     else
-        root->right = get_new_node(data);
+        root->right = insert(root->right, data);
     return root;
+}
+
+void inorder(BSTnode* root)
+{
+    if (root)
+    {
+        inorder(root->left);
+        std::cout<<root->data<<" ";
+        inorder(root->right);
+    }
 }
 
 int main()
@@ -42,4 +52,8 @@ int main()
     root = insert(root, 70);
     root = insert(root, 20);
     root = insert(root, 10);
+
+    inorder(root);// should print all elements in sorted order
+    std::cout<<std::endl;
+    return 0;
 }
