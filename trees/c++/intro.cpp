@@ -39,6 +39,16 @@ bool search(BSTnode* root, int data)
     else return search(root->right, data);
 }
 
+void preorder(BSTnode* root)
+{
+    if (root)
+    {
+        std::cout<<root->data<<" ";
+        preorder(root->left);
+        preorder(root->right);
+    }
+}
+
 void inorder(BSTnode* root)
 {
     if (root)
@@ -46,6 +56,16 @@ void inorder(BSTnode* root)
         inorder(root->left);
         std::cout<<root->data<<" ";
         inorder(root->right);
+    }
+}
+
+void postorder(BSTnode* root)
+{
+    if (root)
+    {
+        postorder(root->left);
+        postorder(root->right);
+        std::cout<<root->data<<" ";
     }
 }
 
@@ -63,6 +83,10 @@ int main()
 
     inorder(root);// should print all elements in sorted order
     std::cout<<std::endl;
+    preorder(root);
+    std::cout<<std::endl;
+    postorder(root);
+    std::cout<<std::endl<<std::endl;
 
     if (search(root, 40))
         std::cout<<"40 is found\n";
