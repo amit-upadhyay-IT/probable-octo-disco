@@ -67,20 +67,19 @@ BSTnode* remove(BSTnode* root, int data)
         }
         else if (!root->right)
         {
-            BSTnode* temp = root->left;
-            root = root->left->left; // or root = temp->left;
+            BSTnode* temp = root;
+            root = root->left; // or root = temp->left;
             delete temp;
-            return root;
         }
         // case 3: with two children
         // else
         {
             BSTnode* inorder_successor = find_min(root->right);
             root->data = inorder_successor->data;
-            root = remove(root->right, inorder_successor->data);
-            return root;
+            root->right = remove(root->right, inorder_successor->data);
         }
     }
+    return root;
 }
 
 bool search(BSTnode* root, int data)
