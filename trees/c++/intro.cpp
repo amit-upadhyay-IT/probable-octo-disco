@@ -67,12 +67,12 @@ BSTnode* remove(BSTnode* root, int data)
         }
         else if (!root->right)
         {
-            BSTnode* temp = root;
-            root = root->left; // or root = temp->left;
-            delete temp;
+            BSTnode *temp = root->left;
+            delete root;
+            root = temp;
         }
         // case 3: with two children
-        // else
+        else
         {
             BSTnode* inorder_successor = find_min(root->right);
             root->data = inorder_successor->data;
@@ -128,6 +128,7 @@ int main()
     root = insert(root, 40);
     root = insert(root, 60);
     root = insert(root ,30);
+    root = insert(root, 35);
     root = insert(root, 70);
     root = insert(root, 20);
     root = insert(root, 10);
