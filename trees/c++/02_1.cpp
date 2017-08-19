@@ -1,3 +1,7 @@
+/*
+ * check whether two trees are identical or not
+ *
+ * */
 #include<iostream>
 
 struct node
@@ -89,3 +93,6 @@ int main()
     std::cout<<std::endl;
     return 0;
 }
+
+// T.C = O(n)
+// S.C = O(height of tree)
