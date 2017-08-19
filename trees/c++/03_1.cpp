@@ -36,15 +36,21 @@ node* construct_tree(int inorder_exp[], int postorder_exp[], int first_pos, int 
 
     int root_pos = get_position(inorder_exp, root_ele, first_pos, last_pos);
 
-    node* temp = new node();
-    temp->data = root_ele;
-    temp->left = temp->right = NULL;
+    node* temp = NULL;
 
-    if (first_pos >= last_pos)
-        return temp;
+    if (root_ele != -1)
+    {
+        temp = new node();
+        temp->data = root_ele;
+        temp->left = temp->right = NULL;
 
-    temp->left = construct_tree(inorder_exp, postorder_exp, first_pos, root_pos-1, n);
-    temp->right = construct_tree(inorder_exp, postorder_exp, root_pos+1, last_pos, n);
+        if (first_pos >= last_pos)
+            return temp;
+
+        temp->left = construct_tree(inorder_exp, postorder_exp, first_pos, root_pos-1, n);
+        temp->right = construct_tree(inorder_exp, postorder_exp, root_pos+1, last_pos, n);
+
+    }
 
     return temp;
 }
@@ -56,6 +62,16 @@ void inorder(node* root)
         inorder(root->left);
         std::cout<<root->data<<" ";
         inorder(root->right);
+    }
+}
+
+void preorder(node* root)
+{
+    if (root)
+    {
+        std::cout<<root->data<<" ";
+        preorder(root->left);
+        preorder(root->right);
     }
 }
 
@@ -75,7 +91,9 @@ int main()
 
     node* root = construct_tree(inorder_exp, postorder_exp, 0, n-1, n);
     std::cout<<std::endl;
-    inorder(root);
+    //inorder(root);
+    std::cout<<std::endl;
+    preorder(root);
     std::cout<<std::endl;
     return 0;
 }
