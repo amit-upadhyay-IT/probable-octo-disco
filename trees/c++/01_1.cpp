@@ -47,12 +47,7 @@ bool search(node* root, int data)
 
 int get_size(node* root)
 {
-    if (!root)
-        return 0;
-    if (!root->left && !root->right)
-        return 1;
-    else
-        return (1 + get_size(root->left) + get_size(root->right));
+    return root ? (1 + get_size(root->left) + get_size(root->right)): 0;
 }
 
 void inorder(node* root)
