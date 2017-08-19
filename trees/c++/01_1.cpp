@@ -1,3 +1,6 @@
+/*
+ * get the size of a tree
+ * */
 #include<iostream>
 
 struct node
@@ -65,3 +68,6 @@ int main()
     std::cout<<std::endl;
     return 0;
 }
+
+// T.C = O(n)
+// S.C = O(n)<-- in worst case height of tree would be n
