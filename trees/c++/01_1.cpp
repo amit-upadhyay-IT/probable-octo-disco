@@ -14,15 +14,6 @@ node* get_new_node(int data)
     return new_node;
 }
 
-node* find_min(node* root)
-{
-    if (!root) return root;
-    node* temp = root;// we can even use the root variable itself, because root here is local copy of root pointer.
-    while (temp->left)// finding the leaf
-        temp = temp->left;
-    return temp;
-}
-
 node* insert(node* root, int data)
 {
     // case 1 when root is null
@@ -35,14 +26,6 @@ node* insert(node* root, int data)
     else
         root->right = insert(root->right, data);
     return root;
-}
-
-bool search(node* root, int data)
-{
-    if (!root) return false;
-    else if (root->data == data) return true;
-    else if (root->data > data) return search(root->left, data);
-    else return search(root->right, data);
 }
 
 int get_size(node* root)
