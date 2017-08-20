@@ -1,5 +1,6 @@
 /*
  * level order traversal
+ * tree used is BST
  * */
 #include<iostream>
 #include<queue>
@@ -90,3 +91,6 @@ int main ()
     std::cout<<std::endl;
     return 0;
 }
+
+// T.C = O(n)
+// S.C = O(n/2) max size of queue is maximum number of nodes in any level in the tree
