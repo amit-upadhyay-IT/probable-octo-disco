@@ -39,21 +39,23 @@ node* insert(node* root, int data)
     return root;
 }
 
-void print_array(node* arr[], int k)
-{
-    for (int i = 0; i < k; ++i)
-    {
-        std::cout<<arr[i]->data<<" ";
-    }
-    std::cout<<std::endl;
-}
 
 node* get_lca(node* root, int val1, int val2)
 {
-    node* arr1[100], *arr2[100];
-    int size1 = get_array(root, val1, arr1);
-    int size2 = get_array(root, val2, arr2);
-    return compare_arrays(arr1, arr2);
+    while (root)
+    {
+        bool b1 = val1 < root->data && val2 < root->data;
+        bool b2 = val1 > root->data && val2 > root->data;
+        if (b1 || b2)
+        {
+            b1 ? root = root->left : root = root->right;
+        }
+        else
+        {
+            break;
+        }
+    }
+    return root;
 }
 
 int main ()
@@ -68,7 +70,7 @@ int main ()
     root = insert(root, 60);
     root = insert(root, 65);
 
-    node* lca_node = get_lca(root, 65, 150);
+    node* lca_node = get_lca(root, 65, 75);
     std::cout<<lca_node->data;
 
     std::cout<<std::endl;
