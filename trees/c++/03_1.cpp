@@ -97,3 +97,6 @@ int main()
     std::cout<<std::endl;
     return 0;
 }
+
+// T.C = O(n^2) because of searching I am using, this can be done in order n also
+// S.C = O(n) in worst case
