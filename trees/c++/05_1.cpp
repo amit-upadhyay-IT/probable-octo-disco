@@ -51,6 +51,20 @@ void level_order(node* root)
     if (root)
     {
         std::queue<node*> q;
+
+        q.push(root);
+
+        while (!q.empty())
+        {
+            node* temp = q.front();
+            q.pop();
+            std::cout<<temp->data<<" ";
+
+            if (temp->left)
+                q.push(temp->left);
+            if (temp->right)
+                q.push(temp->right);
+        }
     }
 }
 
@@ -66,7 +80,13 @@ int main ()
     root = insert(root, 60);
     root = insert(root, 65);
 
+    std::cout<<"\nPreorder\n";
     preorder(root);
 
     std::cout<<std::endl;
+
+    std::cout<<"\nLevel order traversal\n";
+    level_order(root);
+    std::cout<<std::endl;
+    return 0;
 }
