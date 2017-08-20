@@ -70,7 +70,7 @@ int main ()
     root = insert(root, 60);
     root = insert(root, 65);
 
-    node* lca_node = get_lca(root, 65, 75);
+    node* lca_node = get_lca(root, 65, 150);
     std::cout<<lca_node->data;
 
     std::cout<<std::endl;
