@@ -40,48 +40,6 @@ node* insert(node* root, int data)
     return root;
 }
 
-void preorder(node* root)
-{
-    if (root)
-    {
-        std::cout<<root->data<<" ";
-        preorder(root->left);
-        preorder(root->right);
-    }
-}
-
-void level_order(node* root)
-{
-    // traverse only if root is not null
-    if (root)
-    {
-        std::queue<node*> q;
-
-        q.push(root);
-
-        while (!q.empty())
-        {
-            node* temp = q.front();
-            q.pop();
-            std::cout<<temp->data<<" ";
-
-            if (temp->left)
-                q.push(temp->left);
-            if (temp->right)
-                q.push(temp->right);
-        }
-    }
-}
-
-void print_array(node* arr[], int k)
-{
-    for (int i = 0; i < k; ++i)
-    {
-        std::cout<<arr[i]->data<<" ";
-    }
-    std::cout<<std::endl;
-}
-
 int get_array(node* root, int val1, node* arr1[])
 {
     int k = 0;
