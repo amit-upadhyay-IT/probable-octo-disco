@@ -7,13 +7,21 @@ struct AVLnode
     AVLnode *left, *right;
 };
 
+int get_height(AVLnode* root)
+{
+    if (!root)
+        return 0;
+    else
+        return root->height;
+}
+
 AVLnode* single_left_rotation(AVLnode* X)
 {
     AVLnode* W = X->left;
     X->left = W->right;
     W->right = X;
-    X->height = std::max(X->left->height, X->right->height)+1;
-    W->height = std::max(W->left->height, W->right->height)+1;
+    X->height = std::max(get_height(X->left), get_height(X->right))+1;
+    W->height = std::max(get_height(W->left), get_height(W->right))+1;
     return W;
 }
 
@@ -22,8 +30,8 @@ AVLnode* single_right_rotate(AVLnode* W)
     AVLnode* X = W->right;
     W->right = X->left;
     X->left = W;
-    X->height = std::max(X->left->height, X->right->height)+1;
-    W->height = std::max(W->left->height, W->right->height)+1;
+    X->height = std::max(get_height(X->left), get_height(X->right))+1;
+    W->height = std::max(get_height(W->left), get_height(W->right))+1;
     return X;
 }
 
@@ -53,7 +61,7 @@ AVLnode* insert(AVLnode* root, AVLnode* parent, int data)
     else if (data < root->data)
     {
         root->left = insert(root->left, root, data);
-        if (root->left->height - root->right->height == 2)
+        if (get_height(root->left) - get_height(root->right) == 2)
         {
             if (data < root->left->data)// we need to do single left rotation
                 root = single_left_rotation(root);
@@ -64,13 +72,17 @@ AVLnode* insert(AVLnode* root, AVLnode* parent, int data)
     else if (data > root->data)
     {
         root->right = insert(root->right, root, data);
-        if (data > root->right->data)
-            root = single_right_rotate(root);
-        else
-            root = right_left_rotate(root);
+        if (get_height(root->right) - get_height(root->left) == 2)
+        {
+            if (data > root->right->data)
+                root = single_right_rotate(root);
+            else
+                root = right_left_rotate(root);
+
+        }
     }
     // data is in the tree already
-    root->height = std::max(root->left->height, root->right->height) + 1;
+    root->height = std::max(get_height(root->left), get_height(root->right)) + 1;
     return root;
 }
 
