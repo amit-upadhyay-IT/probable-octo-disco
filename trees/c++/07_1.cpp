@@ -5,6 +5,7 @@
  * find the path to reach to node 1 and find the path to reach to node 2
  * store the part into arrays
  * compare two arrays and see the last common node in the path
+ * INCOMPLETE
  * */
 #include<iostream>
 #include<stack>
