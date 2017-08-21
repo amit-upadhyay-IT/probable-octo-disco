@@ -77,3 +77,6 @@ int main ()
     return 0;
 }
 
+// T.C = O(n) since we are going to traverse the entire tree in worst case
+// S.C = O(n) since we are apply kind of preorder traversal, thus the space would be the space required by the stack, therefore the stack would
+// depend on height of tree which in worst case is going to be order of n.
