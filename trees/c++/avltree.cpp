@@ -106,8 +106,13 @@ int main()
     root = insert(root, root, 70);
     root = insert(root, root, 60);
     root = insert(root, root, 50);
+    root = insert(root, root, 110);
+    root = insert(root, root, 120);
+    root = insert(root, root, 102);
+    root = insert(root, root, 101);
 
     preorder(root);
+    std::cout<<std::endl;
 
     return 0;
 }
