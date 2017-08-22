@@ -35,29 +35,32 @@ void inorder(node* root)
     }
 }
 
-node* merge_three_node(node* l_node, node* root, node* r_node)
+node* merge_two_node(node* first, node* second)
 {
-    node* last_l_node = l_node, *first_r_node = r_node;
-    if (last_l_node->right)
-    {
-        while (last_l_node->right)
-        {
-            last_l_node = last_l_node->right;
-        }
-        last_l_node->right = root;
-        root ->left = last_l_node;
-    }
-    if (first_r_node->left)
-    {
-        while (first_r_node->left)
-        {
-            first_r_node = first_r_node->left;
-        }
-        first_r_node->left = root;
-        root->right = first_r_node;
-    }
+    /*
+    if (!first && !second)
+        return first;
+    if (!first)
+        return second;
+    if (!second)
+        return first;
+    */
 
-    return root;
+    while (first->right)
+        first = first->right;
+    while (second->left)
+        second = second->left;
+
+    first->right = second;
+    second->left = first;
+
+    return first;
+    /*
+    // to return the pointer to first node of first dll
+    while (first->left->left)
+        first = first->left;
+    return first;
+    */
 }
 
 node* make_dll(node* root)
@@ -65,11 +68,9 @@ node* make_dll(node* root)
     if (root)
     {
         node* l_node, *r_node;
-        if (root->left)
-            l_node = make_dll(root->left);
-        if (root->right)
-            r_node = make_dll(root->right);
-        root = merge_three_node(l_node, root, r_node);
+        l_node = make_dll(root->left);
+        r_node = make_dll(root->right);
+        root = merge_two_node(merge_two_node(l_node, root), r_node);
         return root;
     }
 }
