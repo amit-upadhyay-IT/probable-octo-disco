@@ -99,3 +99,6 @@ int main()
     std::cout<<std::endl;
     return 0;
 }
+
+// T.C = O(n)
+// S.C = O(n)
