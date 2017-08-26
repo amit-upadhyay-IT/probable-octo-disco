@@ -24,7 +24,6 @@ class Pairs
 				p[k] = new Pairs();
 				p[k].a = arr[i];
 				p[k++].b = temp;
-				//System.out.printf("(%d, %d)", arr[i], temp);
 			}
 			hm.put(arr[i], true);
 		}
