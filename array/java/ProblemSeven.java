@@ -60,3 +60,4 @@ public class ProblemSeven {
     }
 }
 
+// This problem can't be solved in O(n) even after using hashmap
