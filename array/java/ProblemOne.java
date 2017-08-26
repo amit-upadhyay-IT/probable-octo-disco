@@ -68,3 +68,5 @@ public class ProblemOne {
 
 }
 
+// T.C = O(n)
+// S.C = O(n)
