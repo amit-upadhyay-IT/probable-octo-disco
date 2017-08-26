@@ -160,19 +160,38 @@ struct AVLnode* remove_node(struct AVLnode* root, int data)
     return root;
 }
 
+void getMaxInK(int *arr, int n, int k)
+{
+    struct AVLnode* root = NULL;
+    int i, j;
+    while (i < k)
+    {
+        root = insert(root, arr[i]);
+        i++;
+    }
+    printf("%d ", getInorderSuccessor(root)->data);
+
+    for (i = k; i < n-k+1; ++i)
+    {
+        root = remove_node(root, arr[i-1]);
+        root = insert(root, arr[i]);
+        printf("%d ", getInorderSuccessor(root)->data);
+    }
+}
+
 int main()
 {
     struct AVLnode* root = NULL;
-    root = insert(root, 50);
-    root = insert(root, 10);
-    root = insert(root, 45);
-    root = insert(root, 30);
-    root = insert(root, 25);
+    int n, i, k;
+    printf("Enter n\n");
+    scanf("%d", &n);
+    int arr[n];
+    printf("Enter elements\n");
+    for (i = 0; i < n; ++i)
+       scanf("%d", &arr[i]);
+    printf("Enter k\n");
+    scanf("%d", &k);
 
-    inorder(root);
-    printf("\n");
-    root = remove_node(root, 30);
-    printf("\n");
-    inorder(root);
+	getMaxInK(arr, n, k);
     return 0;
 }
