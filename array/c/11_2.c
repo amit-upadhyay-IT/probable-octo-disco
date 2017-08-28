@@ -113,8 +113,9 @@ void inorder(struct AVLnode* root)
 
 struct AVLnode* getInorderSuccessor(struct AVLnode* root)
 {
-    while (root->right)
-        root = root->right;
+    if (!root) return root;
+    while (root->left)
+        root = root->left;
     return root;
 }
 
@@ -160,22 +161,32 @@ struct AVLnode* remove_node(struct AVLnode* root, int data)
     return root;
 }
 
+struct AVLnode* getMaxNode(struct AVLnode* root)
+{
+    if (!root)
+        return root;
+    while (root->right)
+        root = root->right;
+    return root;
+}
+
 void getMaxInK(int *arr, int n, int k)
 {
     struct AVLnode* root = NULL;
-    int i, j;
+    int i = 0, j;
     while (i < k)
     {
         root = insert(root, arr[i]);
         i++;
     }
-    printf("%d ", getInorderSuccessor(root)->data);
+    struct AVLnode* temp = getMaxNode(root);
+    printf("%d ", temp->data);
 
-    for (i = k; i < n-k+1; ++i)
+    for (i = k; i < n; ++i)
     {
-        root = remove_node(root, arr[i-1]);
+        root = remove_node(root, arr[i-k]);
         root = insert(root, arr[i]);
-        printf("%d ", getInorderSuccessor(root)->data);
+        printf("%d ", getMaxNode(root)->data);
     }
 }
 
@@ -185,13 +196,13 @@ int main()
     int n, i, k;
     printf("Enter n\n");
     scanf("%d", &n);
-    int arr[n];
+    int arr[1000];
     printf("Enter elements\n");
     for (i = 0; i < n; ++i)
        scanf("%d", &arr[i]);
     printf("Enter k\n");
     scanf("%d", &k);
 
-	getMaxInK(arr, n, k);
+    getMaxInK(arr, n, k);
     return 0;
 }
