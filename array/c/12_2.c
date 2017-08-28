@@ -4,13 +4,22 @@
 
 struct AVLnode
 {
-    int data, height;
+    int data, height, count;
     struct AVLnode* left, *right;
 };
 
 int max(int a, int b)
 {
     return a > b ? a:b;
+}
+
+int getCount(struct AVLnode* root)
+{
+    if (!root)
+        return 0;
+    if (!root->left && !root->right)// leaf node
+        return 0;
+    return 1 + getCount(root->left);
 }
 
 int getHeight(struct AVLnode* root)
@@ -29,6 +38,8 @@ struct AVLnode* singleLeftRotate(struct AVLnode* X)
     W->right = X;
     X->height = 1 + max(getHeight(X->left), getHeight(X->right));
     W->height = 1 + max(getHeight(W->left), getHeight(W->right));
+    X->count = 1 + getCount(X->left);
+    W->count = 1 + getCount(W->left);
     return W;
 }
 
@@ -39,6 +50,8 @@ struct AVLnode* singleRightRotate(struct AVLnode* W)
     X->left = W;
     X->height = 1 + max (getHeight(X->left), getHeight(X->right));
     W->height = 1 + max (getHeight(W->left), getHeight(W->right));
+    X->count = 1 + getCount(X->left);
+    W->count = 1 + getCount(W->left);
     return X;
 }
 
@@ -63,6 +76,7 @@ struct AVLnode* insert(struct AVLnode* root, int data)
         root->left = root->right = NULL;
         root->data = data;
         root->height = 0;
+        root->count = 0;
     }
     else if (data < root->data)
     {
@@ -88,6 +102,7 @@ struct AVLnode* insert(struct AVLnode* root, int data)
         }
     }
     root->height = max(getHeight(root->left), getHeight(root->right)) + 1;
+    root->count = getCount(root->left) + 1;
     return root;
 }
 
@@ -162,6 +177,16 @@ int countLeftNodes(struct AVLnode* root)
     return cnt;
 }
 
+void printCountInorder(struct AVLnode* root)
+{
+    if (root)
+    {
+        printCountInorder(root->left);
+        printf("%d ", root->count);
+        printCountInorder(root->right);
+    }
+}
+
 /*
 void processElementOfArr(int *arr, int n)
 {
@@ -201,7 +226,7 @@ int main()
     root = insert(root, 10);
     */
 
-    inorder(root);
+    //inorder(root);
 
     //printCountInorder(root);
     return 0;
