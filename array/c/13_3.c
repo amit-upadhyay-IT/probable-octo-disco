@@ -19,10 +19,11 @@ void getSubArray(int *arr, int n, int x)
     {
         sum = sum + arr[i];
         hash[sum] = i+1;//adding 1 so that we can't have zero as value of any hash
-        if (hash[sum - x])
+        if (hash[sum - x] && sum - x >= 0)
         {
             int firstIndex = hash[sum-x];
             int secondIndex = i;
+            printf("first index = %d and last index = %d\n", firstIndex, secondIndex);
             printSubArray(arr, firstIndex, secondIndex);
             break;
         }
