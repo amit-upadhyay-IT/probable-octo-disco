@@ -10,6 +10,9 @@
  * one proper test case :
  * n = 12
  * arr: [1 1 1 0 1 0 0 0 1 1 1 0]
+ *
+ * this solution would not work for those conditions which has number of zeros more than number of ones
+ * because hashing using simple array can't be done
  * */
 #include<stdio.h>
 #include<stdlib.h>
