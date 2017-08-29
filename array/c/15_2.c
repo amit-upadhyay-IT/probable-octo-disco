@@ -69,3 +69,5 @@ int main()
     printArray(productArray, n);
     return 0;
 }
+// T.C = O(n)
+// S.C = O(n)
