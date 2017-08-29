@@ -12,6 +12,21 @@ void printSubArray(int *arr, int firstIndex, int secondIndex)
 
 void getSubArray(int *arr, int n, int x)
 {
+    int hash[10000] = {0};
+    int sum = 0;
+    int i;
+    for (i = 0; i < n; ++i)
+    {
+        sum = sum + arr[i];
+        hash[sum] = i+1;//adding 1 so that we can't have zero as value of any hash
+        if (hash[sum - x])
+        {
+            int firstIndex = hash[sum-x];
+            int secondIndex = i;
+            printSubArray(arr, firstIndex, secondIndex);
+            break;
+        }
+    }
 }
 
 int main()
