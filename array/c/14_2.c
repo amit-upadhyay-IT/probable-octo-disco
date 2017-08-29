@@ -6,6 +6,10 @@
  * since we are using hash table without chaining thus, chances are there
  * that this program may not work for all test cases.
  * However corresponding java program would definitely work.
+ *
+ * one proper test case :
+ * n = 12
+ * arr: [1 1 1 0 1 0 0 0 1 1 1 0]
  * */
 #include<stdio.h>
 #include<stdlib.h>
@@ -18,6 +22,13 @@ void printSubArray(int *arr, int firstIndex, int lastIndex)
     printf("\n");
 }
 
+void replaceNegOnes(int *arr, int n)
+{
+    int i;
+    for (i = 0; i < n; ++i)
+        if (arr[i] == -1)
+            arr[i] = 0;
+}
 
 void getMaxSubArray(int *arr, int n)
 {
@@ -43,6 +54,7 @@ void getMaxSubArray(int *arr, int n)
             hash[sum] = i; //initializing with the index
         }
     }
+    replaceNegOnes(arr, n);
     printSubArray(arr, lower_bound+1, upper_bound);
 }
 
@@ -68,3 +80,6 @@ int main()
     getMaxSubArray(arr, n);
     return 0;
 }
+
+// T.C = O(n) <- only in one iteration we are solving the problem
+// S.C = O(n) in worst case we may need to make the hashmap size equal to n
