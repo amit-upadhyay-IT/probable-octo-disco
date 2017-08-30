@@ -38,7 +38,9 @@ int getPartiotionIndex(int *arr, int firstIndex, int lastIndex)
 int randomizedPartition(int *arr, int firstIndex, int lastIndex)
 {
     srand(time(NULL));
-    int pivotIndex = rand() % (lastIndex-firstIndex+1);
+    int pivotIndex = rand() % lastIndex;
+    pivotIndex = firstIndex + pivotIndex;
+    printf("PivotIndex = %d\n", pivotIndex);
     swap(arr, pivotIndex, lastIndex);
     return getPartiotionIndex(arr, firstIndex, lastIndex);
 }
@@ -47,7 +49,7 @@ void quickSort(int *arr, int firstIndex, int lastIndex)
 {
     if (firstIndex < lastIndex)
     {
-        int partitionIndex = getPartiotionIndex(arr, firstIndex, lastIndex);
+        int partitionIndex = randomizedPartition(arr, firstIndex, lastIndex);
         quickSort(arr, firstIndex, partitionIndex-1);
         quickSort(arr, partitionIndex+1, lastIndex);
     }
