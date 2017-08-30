@@ -11,7 +11,7 @@ void swap(int *arr, int a, int b)
 void selectionSort(int *arr, int n)
 {
     int i, j;
-    for (i = 0; i < n; ++i)// doing multiple iterations to find the minimum each time and places it at beginning
+    for (i = 0; i < n-1; ++i)// doing multiple iterations to find the minimum each time and places it at beginning
     {
         int minIndex = i;
         for (j = i+1; j < n; ++j)// getting the minimum index
