@@ -62,3 +62,5 @@ int main()
 
     return 0;
 }
+
+// time order is n^2 and it's inplace
