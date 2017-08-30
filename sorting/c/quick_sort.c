@@ -1,5 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
+#include<time.h>
 
 void swap(int *arr, int a, int b)
 {
@@ -32,6 +33,14 @@ int getPartiotionIndex(int *arr, int firstIndex, int lastIndex)
     }
     swap(arr, lastIndex, partitionIndex);// in the end we just put the pivot in its right position(which is partitionIndex).
     return partitionIndex;
+}
+
+int randomizedPartition(int *arr, int firstIndex, int lastIndex)
+{
+    srand(time(NULL));
+    int pivotIndex = rand() % (lastIndex-firstIndex+1);
+    swap(arr, pivotIndex, lastIndex);
+    return getPartiotionIndex(arr, firstIndex, lastIndex);
 }
 
 void quickSort(int *arr, int firstIndex, int lastIndex)
