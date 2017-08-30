@@ -14,13 +14,13 @@ void insertionSort(int *arr, int n)
     for (i = 1; i < n; ++i)
     {
         int key = arr[i];
-        j = i-1;
-        while (j >= 0 && key < arr[j])
+        j = i-1;// j is pointing to right most part of the sorted array, so that we can start comparing from there
+        while (j >= 0 && key < arr[j])// check if current element pointed by i is smaller or not, if smaller then only we need to shift elements from sorted part of array
         {
-            arr[j+1] = arr[j];
+            arr[j+1] = arr[j];// shifting elements
             j--;
         }
-        arr[j+1] = key;
+        arr[j+1] = key;// at the end which elements gets shifted then we need to place the element pointed by ith index at its appropriate position
     }
 }
 
