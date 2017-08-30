@@ -83,3 +83,4 @@ int main()
     printArray(arr, n);
     return 0;
 }
+// T.C = O(n log n) not inplace
