@@ -1,3 +1,8 @@
+/*
+ * inserting elements into avl tree and then doing inorder traversal
+ * insertion in avl takes log n time and if we insert n elements total time would be n logn and traversal would
+ * take n time. Thus overall time taken would be n*log(n)
+ * */
 #include<stdio.h>
 #include<stdlib.h>
 
