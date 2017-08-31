@@ -122,48 +122,6 @@ struct AVLnode* getInorderSuccessor(struct AVLnode* root)
     return root;
 }
 
-struct AVLnode* remove_node(struct AVLnode* root, int data)
-{
-    if (!root)
-        return root;
-    // search for element
-    if (data < root->data)
-        root->left = remove_node(root->left, data);
-    else if (data > root->data)
-        root->right = remove_node(root->right, data);
-    else
-    {
-        // data is found
-        // node to be deleted is leaf
-        if (!root->left && !root->right)
-        {
-            free(root);
-            root = NULL;
-        }
-        // node to be deleted has one child
-        else if (!root->right)// has left child
-        {
-            struct AVLnode* temp = root;
-            root = root->left;
-            free(temp);
-        }
-        else if (!root->left)// has right child
-        {
-            struct AVLnode* temp = root;
-            root = root->right;
-            free(temp);
-        }
-        else
-        {
-            // node has two children
-            struct AVLnode* inorderSuccessor = getInorderSuccessor(root->right);
-            root->data = inorderSuccessor->data;
-            root->right = remove_node(root->right, inorderSuccessor->data);
-        }
-    }
-    return root;
-}
-
 int main()
 {
     struct AVLnode* root = NULL;
@@ -173,9 +131,6 @@ int main()
     root = insert(root, 30);
     root = insert(root, 25);
 
-    inorder(root);
-    printf("\n");
-    root = remove_node(root, 30);
     printf("\n");
     inorder(root);
     return 0;
