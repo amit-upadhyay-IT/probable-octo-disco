@@ -37,4 +37,4 @@ int main()
     return 0;
 }
 
-// time should be the time used in evaluation of log2
+// time complexity = O(log n)
