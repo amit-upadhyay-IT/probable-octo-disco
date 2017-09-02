@@ -22,3 +22,6 @@ int main()
     printf("\n");
     return 0;
 }
+
+// T.C = O(n) where n is the number values not the number of bits
+// S.C = constant
