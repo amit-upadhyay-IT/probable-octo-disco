@@ -31,3 +31,5 @@ int main()
     return 0;
 }
 
+// T.C = O(log n)
+// space is constant
