@@ -21,4 +21,4 @@ int main()
     return 0;
 }
 
-// what is the time complexity?
+// time should be the time used in evaluation of log2
