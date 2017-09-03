@@ -2,7 +2,7 @@
 #include<stdio.h>
 #include<string.h>
 
-void removeDup(std::string s, char *ex)
+void removeDup(std::string s, std::string ex)
 {
     int hash[256] = {0};
     int k = 0;
@@ -12,18 +12,15 @@ void removeDup(std::string s, char *ex)
             ex[k++] = s[i];
         hash[s[i]] = 1;
     }
-    ex[k] = '\0';
 }
 
 int main()
 {
     std::string s;
     std::getline(std::cin, s);
-    //std::string ss;
-    char ss[1000];
+    std::string ss;
 
     removeDup(s, ss);
-    printf("%s\n", ss);
-    //std::cout<<ss<<std::endl;
+    std::cout<<ss<<std::endl;
     return 0;
 }
