@@ -43,3 +43,6 @@ int main()
 
     return 0;
 }
+
+// time = O(n*k)
+// constant space
