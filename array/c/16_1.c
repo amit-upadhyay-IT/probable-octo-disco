@@ -12,6 +12,22 @@ void printArray(int *arr, int n)
     printf("\n");
 }
 
+void sortIt(int *arr, int n)
+{
+    int i;
+    for (i = 1; i < n; ++i)
+    {
+        int key = arr[i];
+        int j = i - 1;
+        while (j > 0 && key < arr[j])
+        {
+            arr[j+1] = arr[j];
+            j--;
+        }
+        arr[j+1] = key;
+    }
+}
+
 int main()
 {
     int i, *arr, n;
@@ -21,6 +37,9 @@ int main()
     printf("\nEnter elements\n");
     for (i = 0; i < n; ++i)
         scanf("%d", &arr[i]);
+
+    sortIt(arr, n);
+    printArray(arr, n);
 
     return 0;
 }
