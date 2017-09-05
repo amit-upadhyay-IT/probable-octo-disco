@@ -5,6 +5,18 @@
 #include<stdio.h>
 #include<stdlib.h>
 
+void rotateRight(int *arr, int n, int d)
+{
+    int temp, i;
+    while (d--)
+    {
+        temp = arr[n-1];
+        for (i = n-2; i >= 0; --i)
+            arr[i+1] = arr[i];
+        arr[i+1] = temp;
+    }
+}
+
 void rotateLeft(int *arr, int n, int d)
 {
     int temp, i;
@@ -35,7 +47,8 @@ int main()
     int d = 2;
     //scanf("%d", &d);
 
-    rotateLeft(arr, n, d);
+    //rotateLeft(arr, n, d);
+    rotateRight(arr, n, d);
 
     printArray(arr, n);
     return 0;
