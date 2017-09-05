@@ -54,5 +54,5 @@ int main()
     return 0;
 }
 
-// time is O(n*d)
+// time is O(n)
 // space is O(1)
