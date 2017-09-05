@@ -5,6 +5,21 @@
 #include<stdio.h>
 #include<stdlib.h>
 
+void rotateRight(int *arr, int n, int d)
+{
+    // copy the last d elements from right to left
+    int i, *temp = malloc(sizeof(int)*d);
+    for (i = n-d; i < n; ++i)
+        temp[i-(n-d)] = arr[i];
+
+    // shifting the elements
+    for (i = n-d-1; i >= 0; i--)
+        arr[i+d] = arr[i];
+
+    for (i = 0; i < d; ++i)
+        arr[i] = temp[i];
+}
+
 void rotateLeft(int *arr, int n, int d)
 {
     int *temp = malloc(sizeof(int) * d);
@@ -37,7 +52,8 @@ int main()
     int d = 2;
     //scanf("%d", &d);
 
-    rotateLeft(arr, n, d);
+    //rotateLeft(arr, n, d);
+    rotateRight(arr, n, d);
 
     printArray(arr, n);
     return 0;
