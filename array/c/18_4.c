@@ -47,3 +47,6 @@ int main()
     printf("\n");
     return 0;
 }
+
+// time is O(n)
+// space is constant
