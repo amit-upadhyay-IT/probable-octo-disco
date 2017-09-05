@@ -29,3 +29,5 @@ int main()
     printf("\n");
     return 0;
 }
+
+// Time is n^2
