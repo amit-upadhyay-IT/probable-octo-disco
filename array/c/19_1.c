@@ -59,4 +59,5 @@ int main()
     return 0;
 }
 
-// Time is n^2
+// time is O(n)
+// space is O(d)
