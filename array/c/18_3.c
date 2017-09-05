@@ -59,4 +59,8 @@ int main()
     return 0;
 }
 
-// Time is n^2
+// time is o(n), but this is not preferable as multiplication of large number
+// may be time consuming, also for large number of elements calculating
+// factorial is difficult
+// sometimes we may also not be able to store multiplication result into
+// premetive data type
