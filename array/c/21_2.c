@@ -80,3 +80,6 @@ int main()
     printf("\n");
     return 0;
 }
+
+// Time is O(n^2)
+// space is constant
