@@ -66,5 +66,5 @@ int main()
     return 0;
 }
 
-// Time is O(n^2)
-// space is contant
+// Time is O(n)
+// space is O(n)
