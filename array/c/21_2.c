@@ -69,7 +69,7 @@ int getTriangleCount(int *arr, int n)
 
 int main()
 {
-    int arr[] = {6, 7, 8, 10, 12, 14, 50};
+    int arr[] = {6, 7, 8, 12, 14, 50, 10};
     int size = sizeof(arr)/sizeof(arr[0]);
 
     quickSort(arr, 0, size-1);
