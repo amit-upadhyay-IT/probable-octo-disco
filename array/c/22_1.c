@@ -13,7 +13,7 @@ int minSum(int *arr, int n, int k)
     {
         for (j = i; j < n; ++j)
         {
-            if ((1 & (1 << j)) > 0)
+            if ((i & (1 << j)) > 0)
                 sum = sum + arr[j];
             if (sum == k)
                 return 1;
