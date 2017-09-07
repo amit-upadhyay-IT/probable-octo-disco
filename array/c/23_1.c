@@ -23,6 +23,7 @@ void changeArray(int *arr, int n)
         temp[i] = arr[arr[i]];
     }
 
+    // copying elements of temp in original array
     for (i = 0; i < n; ++i)
     {
         arr[i] = temp[i];
@@ -41,3 +42,5 @@ int main()
     return 0;
 }
 
+// Time is O(n)
+// space is O(n)
