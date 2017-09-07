@@ -27,7 +27,7 @@ int* countingSort(int *arr, int n, int range)
     for (i = 2; i <= range; ++i)
         c[i] = c[i-1]+c[i];
 
-    for (i = n-1; i > 0; --i)
+    for (i = n-1; i >= 0; --i)
     {
         b[c[arr[i]]] = arr[i];
         c[arr[i]]--;
