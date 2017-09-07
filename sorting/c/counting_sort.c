@@ -24,13 +24,15 @@ int* countingSort(int *arr, int n, int range)
     for (i = 0; i < n; ++i)
         c[arr[i]]++;
 
+    // summing up the previous element and current element in c: why? bcoz we can use it while writing elements in b
     for (i = 2; i <= range; ++i)
         c[i] = c[i-1]+c[i];
 
+    // writing elements in b
     for (i = n-1; i >= 0; --i)
     {
         b[c[arr[i]]] = arr[i];
-        c[arr[i]]--;
+        c[arr[i]]--;// decrementing the count, because next time when same element occurs we need to place is to one position before
     }
 
     return b;
