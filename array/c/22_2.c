@@ -77,3 +77,5 @@ int main()
     return 0;
 }
 
+// time complexity is O(n log n) + O(n)
+// space is constant
