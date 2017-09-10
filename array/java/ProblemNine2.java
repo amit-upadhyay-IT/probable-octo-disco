@@ -33,3 +33,5 @@ public class ProblemNine2 {
 
 }
 
+// time is linear
+// space is constant
