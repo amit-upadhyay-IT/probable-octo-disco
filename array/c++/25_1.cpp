@@ -12,25 +12,30 @@ void printArray(int *arr, int n)
 
 int * constructArray(std::stack<int> s0, std::stack<int> s1, std::stack<int> s2, int n)
 {
-    int *newArr = (int*)malloc(sizeof(int)*n);
-    for (int i = 0; i < n; ++i)
+    int *newArr = (int*) malloc(sizeof(int)*n);
+
+    int i = 0;
+    while (!s0.empty())
     {
-        while (!s0.empty())
-        {
-            newArr[i] = s0.top();
-            s0.pop();
-        }
-        while (!s1.empty())
-        {
-            newArr[i] = s1.top();
-            s1.pop();
-        }
-        while (!s2.empty())
-        {
-            newArr[i] = s2.top();
-            s2.pop();
-        }
+        newArr[i] = s0.top();
+        s0.pop();
+        i++;
     }
+    while (!s1.empty())
+    {
+        newArr[i] = s1.top();
+        s1.pop();
+        i++;
+    }
+    while (!s2.empty())
+    {
+        newArr[i] = s2.top();
+        s2.pop();
+        i++;
+    }
+    std::sort(newArr, newArr+i, std::greater<int>());
+    printArray(newArr, i);
+    return newArr;
 }
 
 int * removeRequiredElement(int *arr, int n, std::stack<int> s0, std::stack<int> s1, std::stack<int> s2)
@@ -110,7 +115,7 @@ int * getLargestMultiple(int *arr, int n)
     }
 
 
-    return NULL;
+    return removeRequiredElement(arr, n, s0, s1, s2);
 }
 
 int main()
@@ -118,6 +123,7 @@ int main()
     int n;
     int arr[] = {4, 1, 7, 3, 8, 8, 3, 3};
     n = sizeof(arr)/sizeof(arr[0]);
+
     getLargestMultiple(arr, n);
     return 0;
 }
