@@ -127,3 +127,6 @@ int main()
     getLargestMultiple(arr, n);
     return 0;
 }
+
+// time is O(n)
+// space is O(n)
