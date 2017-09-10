@@ -10,6 +10,88 @@ void printArray(int *arr, int n)
     std::cout<<std::endl;
 }
 
+int * constructArray(std::stack<int> s0, std::stack<int> s1, std::stack<int> s2, int n)
+{
+    int *newArr = (int*)malloc(sizeof(int)*n);
+    for (int i = 0; i < n; ++i)
+    {
+        while (!s0.empty())
+        {
+            newArr[i] = s0.top();
+            s0.pop();
+        }
+        while (!s1.empty())
+        {
+            newArr[i] = s1.top();
+            s1.pop();
+        }
+        while (!s2.empty())
+        {
+            newArr[i] = s2.top();
+            s2.pop();
+        }
+    }
+}
+
+int * removeRequiredElement(int *arr, int n, std::stack<int> s0, std::stack<int> s1, std::stack<int> s2)
+{
+    int size = n;
+    int sum = 0;
+    for (int i = 0; i < n; ++i)
+        sum = sum + arr[i];
+
+    if (sum % 3 == 0)
+        return arr;
+
+    else if (sum % 3 == 1)
+    {
+        if (!s1.empty())
+        {
+            s1.pop();
+            size--;
+        }
+        else if (!s2.empty())
+        {
+            // we need to pop two elements whose rem is 2
+            s2.pop();
+            size--;
+            if (!s2.empty())
+            {
+                s2.pop();
+                size--;
+            }
+            else
+                return NULL;
+        }
+        else
+            return NULL;
+    }
+    else // rem is 2
+    {
+        if (!s2.empty())
+        {
+            s2.pop();
+            size--;
+        }
+        else if (!s1.empty())
+        {
+            // pop two elements whose rem is 1
+            s1.pop();
+            size--;
+            if (!s1.empty())
+            {
+                s1.pop();
+                size--;
+            }
+            else
+                return NULL;
+        }
+        else
+            return NULL;
+    }
+    return constructArray(s0, s1, s2, size);
+}
+
 int * getLargestMultiple(int *arr, int n)
 {
     // sorting the array in descending order
