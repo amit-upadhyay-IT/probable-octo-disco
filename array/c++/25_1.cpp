@@ -121,7 +121,7 @@ int * getLargestMultiple(int *arr, int n)
 int main()
 {
     int n;
-    int arr[] = {4, 1, 7, 3, 8, 8, 3, 3};
+    int arr[] = {3, 7, 1};
     n = sizeof(arr)/sizeof(arr[0]);
 
     getLargestMultiple(arr, n);
