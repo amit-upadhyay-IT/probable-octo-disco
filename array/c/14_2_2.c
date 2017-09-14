@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+
 void findLargestSubArray(int *arr, int size)
 {
     int maxSize = -1, startIndex, sumLeft[size], min = arr[0], max = arr[0], index;
@@ -51,3 +52,6 @@ int main()
     findLargestSubArray(arr, size);
     return 0;
 }
+
+// time is O(n)
+// space is O(n)
