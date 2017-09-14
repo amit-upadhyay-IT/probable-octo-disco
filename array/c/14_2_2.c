@@ -54,4 +54,4 @@ int main()
 }
 
 // time is O(n)
-// space is O(n)
+// space is O(n) because of hash
