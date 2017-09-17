@@ -38,3 +38,5 @@ private static int max_cnt = 0;
 
 }
 
+// TIme is O(n*log2(n))
+// space is constant
