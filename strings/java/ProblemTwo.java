@@ -17,7 +17,7 @@ public class ProblemTwo {
 			else
 			{
 				// value is repeating so we search for value which is not into hash
-				while (hash[j] == 0)
+				while (hash[cStr[j]] == 0)
 					j++;
 				cStr[i] = cStr[j];
 				i++;
