@@ -24,6 +24,8 @@ public static void main(String[] args) {
     new ProblemTwo().removeDuplicates(cStr);
 
     }
-
 }
+
+// TIme is O(n)
+// Space is constant
 
