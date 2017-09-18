@@ -5,24 +5,16 @@ public class ProblemTwo {
 	private void removeDuplicates(char []cStr)
 	{
 		int hash[] = new int[256];// all values are initialized to 0
-		int i = 0, j = 0;
-		while (i < cStr.length && j < cStr.length)
+		int j = 0;// for filling up the cStr
+		for (int i = 0; i < cStr.length; ++i)
 		{
 			if (hash[cStr[i]] == 0)
 			{
-				// no such value was ever present, so we just increment i
 				hash[cStr[i]] = 1;
-				i++;
-			}
-			else
-			{
-				// value is repeating so we search for value which is not into hash
-				while (hash[cStr[j]] == 0)
-					j++;
-				cStr[i] = cStr[j];
-				i++;
+				cStr[j++] = cStr[i];
 			}
 		}
+		cStr[j] = '\0';
 		System.out.println(cStr);
 	}
 	
