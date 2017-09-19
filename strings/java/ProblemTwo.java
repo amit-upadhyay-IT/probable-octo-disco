@@ -26,3 +26,4 @@ public class ProblemTwo {
         return str;
     }
 }
+// time is linear and space is constant
