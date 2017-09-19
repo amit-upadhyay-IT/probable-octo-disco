@@ -1,28 +1,28 @@
 public class ProblemTwo {
 
-    private void removeDuplicates(char []cStr)
+    public static void main(String[] args) {
+
+        StringBuilder str = new StringBuilder("gaadbbaaggaiij");
+
+        str = new ProblemTwo().removeDuplicates(str);
+        System.out.println(str);
+
+    }
+
+    private StringBuilder removeDuplicates(StringBuilder str)
     {
-        int hash[] = new int[256];// all values are initialized to 0
-        int j = 0;// for filling up the cStr
-        for (int i = 0; i < cStr.length; ++i)
+        int []hash = new int[256];
+        int j = 0;
+        for (int i = 0; i < str.length(); ++i)
         {
-            if (hash[cStr[i]] == 0)
+            if (hash[str.charAt(i)] == 0)// first time occurrence
             {
-                hash[cStr[i]] = 1;
-                cStr[j++] = cStr[i];
+                hash[str.charAt(i)] = 1;
+                str.insert(j, str.charAt(i));
+                j++;
             }
         }
-        cStr[j] = '\0';
-        System.out.println(cStr);
+        str = str.delete(j, str.length());
+        return str;
     }
-
-    public static void main(String[] args) {
-        //StringBuilder str = new StringBuilder("gaadbbaaggaiij");
-        String str = new String("gaadbbaaggaiij");
-        char []cStr = str.toCharArray();
-        new ProblemTwo().removeDuplicates(cStr);
-
-    }
-
 }
-
