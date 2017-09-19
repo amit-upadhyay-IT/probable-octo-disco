@@ -51,3 +51,6 @@ int main()
     std::cout<<s<<std::endl;
     return 0;
 }
+
+// Time : O(n^2)
+// space is constant
