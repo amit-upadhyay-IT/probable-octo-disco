@@ -6,11 +6,13 @@
 
 char* rotateOnce(char *s, int l)
 {
+    int i;
     char temp = s[0];
-    for (int i = 0; i < l-1; ++i)
+    for (i = 0; i < l-1; ++i)
     {
         s[i] = s[i+1];
     }
+    s[i] = temp;
     return s;
 }
 
