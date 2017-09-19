@@ -33,9 +33,9 @@ int main ()
     char *s1 = new char[100];
     char *s2 = new char[100];
     std::cout<<"Enter string 1:\n";
-    std::cin.getline(s1, sizeof(s1));
+    std::cin.getline(s1, 100);
     std::cout<<"Enter string 2:\n";
-    std::cin.getline(s2, sizeof(s2));
+    std::cin.getline(s2, 100);
     if (checkRotation(s1, s2, strlen(s1), strlen(s2)))
         std::cout<<"YES\n";
     else
