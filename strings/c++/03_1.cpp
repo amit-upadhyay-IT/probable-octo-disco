@@ -42,3 +42,6 @@ int main ()
         std::cout<<"NO\n";
     return 0;
 }
+
+// time is quadratic : each comparison is going to take linear time and we are going to compare n strings to n^2 is time
+// space is constant as I have used char array.
