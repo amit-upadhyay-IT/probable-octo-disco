@@ -4,27 +4,41 @@
 #include<iostream>
 #include<cstring>
 
+void revStr(char *s, int i, int j)
+{
+    if (i >= j)
+        return ;
+    for (int k = i; k <= (i+j)/2; ++k)
+    {
+        std::swap(s[k], s[i+j-k]);
+    }
+}
+
 void reverseString(char *s, int firstIndex, int lastIndex)
 {
-    for (int i = firstIndex; i < lastIndex/2; ++i)
+    if (firstIndex >= lastIndex)
+        return ;
+    for (int i = firstIndex, j = lastIndex-1; i <= (lastIndex+firstIndex)/2; ++i, --j)
     {
-        std::swap(s[firstIndex], s[lastIndex]);
+        std::swap(s[i], s[j]);
     }
 }
 
 void reverseWords(char *s, int len)
 {
-//    std::cout<<"first check\n"<<s<<std::endl;
+    std::cout<<len<<std::endl;
     int firstNonZero = 0;
-    reverseString(s, 0, len);
-//    std::cout<<"second check\n"<<s<<std::endl;
+    revStr(s, 0, len-1);
+    std::cout<<"second check\n"<<s<<std::endl;
     for (int i = 0; i < len; ++i)
     {
         if (s[i] == ' ')
         {
-            reverseString(s, firstNonZero, i);
+            revStr(s, firstNonZero, i-1);
             firstNonZero = i+1;
         }
+        else if (s[i+1] == '\0')
+            revStr(s, firstNonZero, i);
     }
 }
 
@@ -32,8 +46,8 @@ int main()
 {
     char* s = new char[1000];
     std::cout<<"\nEnter string\n";
-    std::cin.getline(s, sizeof(1000));
-  //  reverseWords(s, strlen(s));
+    std::cin.getline(s, 1000);
+    reverseWords(s, strlen(s));
     std::cout<<s<<std::endl;
     return 0;
 }
