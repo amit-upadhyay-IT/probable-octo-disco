@@ -22,7 +22,7 @@ public class ProblemTwo {
                 j++;
             }
         }
-        str = str.delete(j, str.length());
+        str = str.delete(j, str.length());// deleting the last duplicates
         return str;
     }
 }
