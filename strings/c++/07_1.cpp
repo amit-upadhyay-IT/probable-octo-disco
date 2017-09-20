@@ -33,3 +33,5 @@ int main()
         std::cout<<"Each character is repeating\n";
     return 0;
 }
+
+// time is n^2 and space is constant
