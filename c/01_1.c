@@ -6,7 +6,7 @@ int matchSubstr(char *str1, char *str2, int first, int last)
 {
     int flag = 1;
     int i, j;
-    for (i = first, j = 0; i <= last; ++i, j++)
+    for (i = first, j = 0; i < last; ++i, j++)
     {
         if (str1[i] != str2[j])
         {
@@ -37,7 +37,7 @@ int main()
             printf("\nThe first occurrence is at position %d\n", i);
         }
     }
-    printf("\nThus there are overall %d occurrence of %s in %s\n", cnt, str2, str2);
+    printf("\nThus there are overall %d occurrence of %s in %s\n", cnt, str2, str1);
 
     return 0;
 }
