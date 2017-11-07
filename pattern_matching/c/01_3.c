@@ -4,8 +4,8 @@
 
 void computeLPS(char *pat, int pLen, int *lps)
 {
-    int index = 1, len = 0; 
-    lps[0] = 0; 
+    int index = 1, len = 0;
+    lps[0] = 0;
     while(index < pLen)
     {
         if(pat[index] == pat[len])
@@ -13,7 +13,7 @@ void computeLPS(char *pat, int pLen, int *lps)
             len++;
             lps[index++] = len;
         }
-        else 
+        else
         {
             if(len)
                 len = lps[len-1];
@@ -22,13 +22,13 @@ void computeLPS(char *pat, int pLen, int *lps)
         }
     }
 }
-  
+
 void KMPPatternSearch(char *pat, char *txt)
 {
     int pLen = strlen(pat);
     int tLen = strlen(txt);
     int lps[pLen], tIndex, pIndex;
-    computeLPS(pat, pLen, lps); 
+    computeLPS(pat, pLen, lps);
     for(tIndex = 0, pIndex = 0; tIndex < tLen;)
     {
         if(pat[pIndex] == txt[tIndex])
@@ -36,7 +36,7 @@ void KMPPatternSearch(char *pat, char *txt)
             pIndex++;
             tIndex++;
         }
- 
+
         if(pIndex == pLen)
         {
             printf("Pattern Found at index %d \n", tIndex - pIndex);
@@ -51,7 +51,7 @@ void KMPPatternSearch(char *pat, char *txt)
         }
     }
 }
- 
+
 int main()
 {
     char txt[100], pat[100];
@@ -62,3 +62,8 @@ int main()
     KMPPatternSearch(pat, txt);
     return 0;
 }
+
+/*
+ * Time complexity = O (m) + O(n)
+ * O(m) is time taken for construction of DFA
+ * */
