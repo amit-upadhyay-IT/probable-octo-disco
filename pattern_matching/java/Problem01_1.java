@@ -1,3 +1,5 @@
+package sols;
+
 public class Problem01_1 {
 
 	public static void main(String[] args) {
@@ -81,3 +83,4 @@ class DFA
 	}
 }
 
+// Time for getting number of occurrence is O(n)
