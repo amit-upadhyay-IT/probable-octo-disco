@@ -41,3 +41,8 @@ int main()
 
     return 0;
 }
+
+/*
+ * Time complexity = O(n-m+1)*O(m) or we can say O(mn)
+ * Space complexity = O(1)
+ * */
