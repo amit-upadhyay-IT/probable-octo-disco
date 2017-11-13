@@ -104,6 +104,41 @@ class Node
             std::cout<<std::endl;
         }
 
+        Node* reverse_iterative(Node* head)
+        {
+            if (!head)
+                return head;
+            // ll has one node only
+            if (!head->next)
+                return head;
+
+            Node* prev, *nextNode;
+            prev = nextNode = NULL;
+
+            while (head)
+            {
+                nextNode = head->next;
+                head->next = prev;
+                prev = head;
+                head = nextNode;
+            }
+            return prev;
+        }
+
+        Node* reverse_recursive(Node* first)
+        {
+            if (!first)
+                return NULL;
+            if (!first->next)
+                return first;
+
+            Node* rest = reverse_recursive(first->next);
+
+            first->next->next = first;
+            first->next = NULL;
+            return rest;
+        }
+
 };
 
 
@@ -116,7 +151,7 @@ int main()
 
     do
     {
-        std::cout<<"\n1. insert at beginning\n2.insert after val\n3.insert at end\n4.print LL\n5.delete from beginning\n6.delete from middle\n7.delete from end\n9.exit\n";
+        std::cout<<"\n1. insert at beginning\n2.insert after val\n3.insert at end\n4.print LL\n5.delete from beginning\n6.delete from middle\n7.delete from end\n8.reverse iterative\n9.reverse recursive\n10.exit\n";
         std::cin>>choice;
 
         switch (choice)
@@ -170,12 +205,21 @@ int main()
                 {
                     head = obj.remove_from_end(head);
                 }
+            case 8:
+                {
+                    head = obj.reverse_iterative(head);
+                }
                 break;
             case 9:
+                {
+                    head = obj.reverse_recursive(head);
+                }
+                break;
+            case 10:
                 exit(0);
         }
 
-    }while (choice != 9);
+    }while (choice != 10);
 
     return 0;
 }
