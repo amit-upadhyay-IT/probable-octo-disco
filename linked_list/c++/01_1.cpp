@@ -59,6 +59,41 @@ class Node
             return head;
         }
 
+        Node* remove_from_beginning(Node* head)
+        {
+            Node* temp = head;
+            head = head->next;
+            free(temp);
+            return head;
+        }
+
+        Node* remove_from_middle(Node* head, int val)
+        {
+            Node* temp = head;
+            while (temp->next->data != val)
+                temp = temp->next;
+            //now temp is pointing to one node before the node containing val
+            Node* temp2 = temp->next;
+            temp->next = temp->next->next;
+            free(temp2);
+            return head;
+        }
+
+        Node* remove_from_end(Node* head)
+        {
+            Node *temp = head;
+            while (temp->next->next)
+            {
+                temp = temp->next;
+            }
+
+            // temp is now pointing to 2nd last node
+            Node *temp2 = temp->next;
+            temp->next = NULL;
+            free(temp2);
+            return head;
+        }
+
         void printLL(Node* head)
         {
             while (head)
@@ -66,7 +101,7 @@ class Node
                 std::cout<<head->data<<" ";
                 head = head->next;
             }
-
+            std::cout<<std::endl;
         }
 
 };
@@ -81,7 +116,7 @@ int main()
 
     do
     {
-        std::cout<<"1. insert at beginning\n2.insert after val\n3.insert at end\n4.print LL\n9.exit";
+        std::cout<<"\n1. insert at beginning\n2.insert after val\n3.insert at end\n4.print LL\n5.delete from beginning\n6.delete from middle\n7.delete from end\n9.exit\n";
         std::cin>>choice;
 
         switch (choice)
@@ -116,6 +151,24 @@ int main()
             case 4:
                 {
                     obj.printLL(head);
+                }
+                break;
+            case 5:
+                {
+                    head = obj.remove_from_beginning(head);
+                }
+                break;
+            case 6:
+                {
+                    int val;
+                    std::cout<<"\nEnter the value of node:\n";
+                    std::cin>>val;
+                    head = obj.remove_from_middle(head, val);
+                }
+                break;
+            case 7:
+                {
+                    head = obj.remove_from_end(head);
                 }
                 break;
             case 9:
