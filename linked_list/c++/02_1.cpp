@@ -174,8 +174,7 @@ int main()
 {
 
     Node *head = NULL;
-    Node obj;
-
+    Operation obj;
 
     head = obj.insert_at_end(head, 1);
     head = obj.insert_at_end(head, 2);
@@ -188,8 +187,8 @@ int main()
     std::cout<<"The linked list:\n";
     obj.printLL(head);
 
-    Operation o;
-    Node* midNode = o.getMiddleNode(head);
+    //Operation o;
+    Node* midNode = obj.getMiddleNode(head);
 
     std::cout<<"\nThe mid node value is : ";
     std::cout << midNode->data << "\n";
