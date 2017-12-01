@@ -30,3 +30,5 @@ if isMaj(li, getMajorityCandidate(li)):
     print getMajorityCandidate(li), 'is the majority element'
 else:
     print 'no majority element'
+
+# time is 2*n
