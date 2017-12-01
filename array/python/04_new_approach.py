@@ -27,3 +27,5 @@ def getDiff(li):
 theMaxDif = getDiff(li)
 
 print theMaxDif
+
+# time and extra space using are both linear
