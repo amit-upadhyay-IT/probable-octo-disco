@@ -15,3 +15,5 @@ def getPairs(l, x):
 li = [10, 5, 12, 14, 7, -4, 3]
 
 getPairs(li, 17)
+
+# time is quadratic with no space

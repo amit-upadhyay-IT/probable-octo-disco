@@ -22,3 +22,5 @@ def getPair(li, x):
 
 
 getPair(li, 214)
+
+# time is nlogn with no extra space

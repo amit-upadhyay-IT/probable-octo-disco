@@ -30,3 +30,5 @@ if retVal != -1:
     print '(', retVal, ',', pair-retVal, ')'
 else:
     print 'no pair found'
+
+# time is linear given array is presorted
