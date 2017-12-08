@@ -42,7 +42,7 @@ void printHeap(struct Heap *h)
 {
     int i;
     printf("\n");
-    for (i = 0; i < h->heapSize; ++i)
+    for (i = 1; i <= h->heapSize; ++i)
         printf("%d ", h->arr[i]);
     printf("\n");
 }
@@ -52,11 +52,11 @@ int main()
     int n;
     scanf("%d", &n);
     struct Heap *h;
-    h->arr = malloc(sizeof(int)*n);
-    h->heapSize = n;
+    h->arr = malloc(sizeof(int)*(n+1));
+    h->heapSize = n+1;
 
     int i;
-    for (i = 0; i < n; ++i)
+    for (i = 1; i <= n; ++i)
         scanf("%d", &h->arr[i]);
 
     buildMaxHeap(h);
