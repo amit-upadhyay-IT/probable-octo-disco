@@ -34,7 +34,7 @@ void max_heapify(struct Heap *h, int i)
 void buildMaxHeap(struct Heap *h)
 {
     int i;
-    for (i = 0; i < h->heapSize; ++i)
+    for (i = h->heapSize/2; i >= 1; --i)
         max_heapify(h, i);
 }
 
@@ -53,10 +53,10 @@ int main()
     scanf("%d", &n);
     struct Heap *h;
     h->arr = malloc(sizeof(int)*(n+1));
-    h->heapSize = n+1;
+    h->heapSize = n;
 
     int i;
-    for (i = 1; i <= n; ++i)
+    for (i = 1; i < n+1; ++i)
         scanf("%d", &h->arr[i]);
 
     buildMaxHeap(h);
