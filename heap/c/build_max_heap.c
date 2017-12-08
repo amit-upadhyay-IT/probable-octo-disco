@@ -18,7 +18,7 @@ void max_heapify(struct Heap *h, int i)
     else
         largest = i;
 
-    if (r <= h->heapSize && h->arr[r] > h->arr[i])
+    if (r <= h->heapSize && h->arr[r] > h->arr[largest])
         largest = r;
 
     if (largest != i) // need for heapify
