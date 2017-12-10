@@ -101,3 +101,8 @@ int main()
     printf("\nThe heap after increasing the key\n");
     printHeap(h);
 }
+
+/*
+ * time complexity = O(log n), in worst case I may need to move from leaf to root
+ * space complexity = O(1), no recursion is involved.
+ * */
