@@ -1,5 +1,5 @@
 /*
- * increase the key in heap
+ * insert key in heap
  * */
 
 #include<stdio.h>
@@ -42,29 +42,6 @@ void buildMaxHeap(struct Heap *h)
         max_heapify(h, i);
 }
 
-void increase_key(struct Heap* h, int index, int key)
-{
-    if (key <= h->arr[index])
-    {
-        printf("\nError\n");
-        return;
-    }
-
-    h->arr[index] = key;
-
-    // as we have increased the value of node, so property of max heap will still be maintained, so just see if parent node has been disturbed or not
-
-    while (index > 1 && h->arr[index/2] < h->arr[index])
-    {
-        // swap parent and child
-        int temp = h->arr[index];
-        h->arr[index] = h->arr[index/2];
-        h->arr[index/2] = temp;
-
-        index /= 2;
-    }
-}
-
 void printHeap(struct Heap *h)
 {
     int i;
@@ -74,6 +51,29 @@ void printHeap(struct Heap *h)
         printf("%d ", h->arr[i]);
     }
     printf("\n");
+}
+
+void insertIntoHeap(struct Heap* h, int key)
+{
+    /*
+     increasing the heapsize and then inserting the element there
+    */
+
+    h->heapSize += 1;
+
+    h->arr[h->heapSize] = key;
+
+    int index = h->heapSize;
+
+    while (index > 1 && h->arr[index/2] < h->arr[index])
+    {
+        // swapping the parent and child
+        int temp = h->arr[index];
+        h->arr[index] = h->arr[index/2];
+        h->arr[index/2] = temp;
+
+        index /= 2;
+    }
 }
 
 
@@ -90,19 +90,17 @@ int main()
 
     buildMaxHeap(h);
 
-    int ind, val;
-    printf("\nEnter the index and the value with which you wanna replace the key\n");
-    scanf("%d%d", &ind,&val);
-
-    printf("\nThe heap before increasing the key\n");
+    printf("\nThe heap is \n");
     printHeap(h);
 
-    increase_key(h, ind, val);
-    printf("\nThe heap after increasing the key\n");
+    int key;
+    printf("\nEnter the element you want to insert into heap\n");
+    scanf("%d", &key);
+
+    insertIntoHeap(h, key);
+
+    printf("\nHeap after inserting element\n");
     printHeap(h);
+
+    return 0;
 }
-
-/*
- * time complexity = O(log n), in worst case I may need to move from leaf to root
- * space complexity = O(1), no recursion is involved. NOTE that this is the tc for the increase function not that of the whole program. The s.c complexity of program is logn because it's involving the buildMaxHeap function.
- * */
