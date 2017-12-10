@@ -86,3 +86,8 @@ int main()
 
     return 0;
 }
+
+/*
+ * Time complexity = O(log n), logn time is for doing the heapify operation
+ * Space complexity = O(log n), for recursion involved in heapify
+ * */
