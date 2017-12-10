@@ -66,3 +66,9 @@ int main()
 
     return 0;
 }
+
+
+/*
+ * time complexity = O(n) and not O(n*logn)
+ * space complexity = O(logn), because of the recursion calling stack
+ * */
