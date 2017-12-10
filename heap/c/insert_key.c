@@ -104,3 +104,9 @@ int main()
 
     return 0;
 }
+
+/*
+ * FOR THE INSERTION ONLY:
+ * time complexity = O(log n)
+ * space complexity = O(1), no recursion is involved in insertion so no count for stack size
+ * */
