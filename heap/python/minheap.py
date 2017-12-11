@@ -32,3 +32,6 @@ class MinHeap:
     def print_heap(self):
         for i in range(1, self.heapSize+1, 1):
             print self.heapList[i],
+
+    def getMinElement(self):
+        return self.heapList[1]
