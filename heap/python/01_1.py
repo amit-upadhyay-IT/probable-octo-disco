@@ -18,3 +18,6 @@ if __name__ == '__main__':
     minHeap = minheap.MinHeap(len(samplelist)-1, samplelist)
     minHeap.build_minheap()
     print 'max is', getMax(minHeap)
+
+# time complexity = O(n)
+# space complexity = O(1)
