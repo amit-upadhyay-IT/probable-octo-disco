@@ -1,13 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
-  
+
 void swap(int *a, int *b)
 {
     int temp = *a;
     *a = *b;
     *b = temp;
 }
-  
+
 void minHeapify(int arr[], int size, int index)
 {
     int left = 2*index+1;
@@ -21,23 +21,24 @@ void minHeapify(int arr[], int size, int index)
     {
         swap(&arr[index], &arr[smallest]);
         minHeapify(arr, size, smallest);
-    }     
+    }
 }
-  
-  
+
+
 void buildMinHeap(int *arr, int size) {
     int index;
     for(index = size/2; index >= 0; index--)
-        minHeapify(arr, size, index);         
-}  
+        minHeapify(arr, size, index);
+}
 
 void printKElements(int *minHeap, int k)
 {
     int index;
     for(index = 0; index < k; index++)
-    	printf("%d\t", minHeap[index]);
+        printf("%d\t", minHeap[index]);
 }
-  
+
+
 void kLargestElements(int *arr, int size, int k)
 {
     int index;
@@ -52,8 +53,8 @@ void kLargestElements(int *arr, int size, int k)
     }
     printKElements(arr, k);
 }
-  
-  
+
+
 int main() {
     int *arr, size, k, index;
     printf("Enter size of the heap\n");
