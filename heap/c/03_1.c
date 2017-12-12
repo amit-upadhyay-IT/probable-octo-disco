@@ -69,3 +69,6 @@ int main() {
     kLargestElements(arr, size, k);
     return 0;
 }
+
+// time complexity = O(k+nlogk)
+// space complexity = O(1)
