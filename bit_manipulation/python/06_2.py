@@ -1,5 +1,5 @@
 def check(n):
-    return not(n & (n-1))
+    return n and not(n & (n-1))
 
 
 if check(64):
