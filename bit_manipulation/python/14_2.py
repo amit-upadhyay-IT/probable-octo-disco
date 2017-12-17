@@ -29,5 +29,10 @@ def getNextHeigher(num):
     return num
 
 
+def getPrevSmaller(num):
+    return ~getNextHeigher(~num)
+
+
 if __name__ == '__main__':
     print getNextHeigher(13948)
+    print getPrevSmaller(13948)
