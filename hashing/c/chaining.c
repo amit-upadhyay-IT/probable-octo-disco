@@ -52,10 +52,8 @@ struct LinkedListNode* searchMe(struct LinkedListNode** hashTable, int index, in
     // if not null then traverse through linked list
     while (temp != NULL)
     {
-        printf("\nTEMP = %d", temp);
         if (key == temp->data)
             res = temp;
-        printf("\ntemp->data=%d\n", temp->data);
         temp = temp->next;
     }
     return res;
@@ -73,9 +71,9 @@ int main()
     scanf("%d", &n);
 
     // declaring the hashTable of size n (i.e. size of input elements), its gonna have pointers to LinkedListNode
-    struct LinkedListNode** hashTable = malloc(n*sizeof(struct LinkedListNode*)); // I have given memory to the table, now I even need to give memory to the elements in the table
+    struct LinkedListNode** hashTable = malloc(10*sizeof(struct LinkedListNode*)); // I have given memory to the table, now I even need to give memory to the elements in the table
     int i;
-    for (i = 0; i < n; ++i)
+    for (i = 0; i < 10; ++i)
     {
         hashTable[i] = NULL;
     }
