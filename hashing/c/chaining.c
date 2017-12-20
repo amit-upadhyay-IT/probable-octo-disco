@@ -38,13 +38,21 @@ struct LinkedListNode* searchMe(struct LinkedListNode** hashTable, int index, in
 {
     struct LinkedListNode* res = NULL;
     struct LinkedListNode* temp = hashTable[index];
+
     if (temp == NULL)
         return NULL;
-    // if not null then traverse through linkedlist
+
+    if (hashTable[index]->data == key)
+    {
+        return hashTable[index];
+    }
+
+    // if not null then traverse through linked list
     while (temp->next)
     {
         if (key == temp->data)
             res = temp;
+        printf("\ntemp->data=%d\n", temp->data);
         temp = temp->next;
     }
     return res;
@@ -75,7 +83,7 @@ int main()
     {
         scanf("%d", &d);
         int hashedValue = hashFunction(d);
-        hashTable[i] = insertAtBeginning(hashTable, hashedValue, d);
+        hashTable[hashedValue] = insertAtBeginning(hashTable, hashedValue, d);
     }
 
     int key;
