@@ -42,14 +42,17 @@ struct LinkedListNode* searchMe(struct LinkedListNode** hashTable, int index, in
     if (temp == NULL)
         return NULL;
 
-    if (hashTable[index]->data == key)
+    // if we just have one element in the block then the while loop below won't get executed
+    // because here condition is temp->next which will be null, thus here I have written if condition
+    if (hashTable[index] != NULL && hashTable[index]->data == key)
     {
         return hashTable[index];
     }
 
     // if not null then traverse through linked list
-    while (temp->next)
+    while (temp != NULL)
     {
+        printf("\nTEMP = %d", temp);
         if (key == temp->data)
             res = temp;
         printf("\ntemp->data=%d\n", temp->data);
@@ -100,6 +103,12 @@ int main()
     {
         printf("\n%d is found\n", res->data);
     }
-
-
 }
+
+
+// time complexity in worst case for searching = O(n),
+// average case t.c = O(1+alpha), where alpha = n/m
+// n <- number of elements in hashtable
+// m <- size of hashtable
+// so alpha is 1 in this case
+// thus average t.c = theta(1)
