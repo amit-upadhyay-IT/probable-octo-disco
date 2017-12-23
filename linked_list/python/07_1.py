@@ -36,6 +36,9 @@ class LinkedList:
         print
 
     def alternatingSplit(self):
+        # checking if linked list has one element or not element, because then we can't split it
+        if not self.head or not self.head.link:
+            return
         p = self.head
         q = self.head.link
         temp = None
