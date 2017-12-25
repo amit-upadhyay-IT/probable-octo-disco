@@ -101,3 +101,6 @@ if __name__ == '__main__':
 
     print 'inorder after deleting ', val, '\n'
     BSTree.inorder_rec(root)
+
+# working test case:
+# 50, 40, 70, 30, 45, 65, 90, 10, 35, 42, 48, 60, 68, 80, 55, 69
