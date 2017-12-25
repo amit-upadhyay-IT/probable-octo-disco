@@ -40,13 +40,63 @@ class BST:
         # returning the root
         return root
 
+    def getMin(self, root):
+        if not root:
+            return root  # None will be returned
+        temp = root
+        while temp.left:
+            temp = temp.left
+        return temp
+
+    def remove(self, root, data):
+        # searching is the first task
+
+        # if empty tree
+        if root is None:
+            return root
+
+        # if data is less
+        if data < root.data:
+            root.left = self.remove(root.left, data)
+        # is data is greater
+        elif data > root.data:
+            root.right = self.remove(root.right, data)
+
+        # if both the above condition doesn't match then definitely we have found element
+        else:
+            # here we can have three different cases, case 1: leaf node found
+            if not root.left and not root.right:
+                # here we don't have to explicitly remove the memory pointed by root, because python is smart enough to take care of that
+                root = None
+
+            # case 2: has one child
+            elif root.left:
+                root = root.left
+            elif root.right:
+                root = root.right
+
+            # case 3: has both child
+            else:
+                inorderSuccessor = self.getMin(root)
+                root.data = inorderSuccessor.data
+                root.right = self.remove(root.right, inorderSuccessor.data)
+
+        return root
+
 
 if __name__ == '__main__':
     BSTree = BST()
     root = None
-    inp = input('enter node data, enter -1 to stop entering\n')
-    while inp != -1:
-        root = BSTree.insert(root, inp)
-        inp = input('enter node data, enter -1 to stop entering\n')
+    inp = input('enter node data, comma separated\n')
+    print inp
+    for i in inp:
+        root = BSTree.insert(root, i)
 
+    print 'the inorder traversal is\n'
+    BSTree.inorder_rec(root)
+
+    val = input('enter node value which you want to delete\n')
+    BSTree.remove(root, val)
+
+    print 'inorder after deleting ', val, '\n'
     BSTree.inorder_rec(root)
