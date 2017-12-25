@@ -20,7 +20,7 @@ class BST:
         if root is None:
             return
         self.inorder_rec(root.left)
-        print root.data
+        print root.data,
         self.inorder_rec(root.right)
 
     def insert(self, root, data):
@@ -85,6 +85,38 @@ class BST:
 
         return root
 
+    def get_inorder_successor(self, root, node):
+        # step 1, if node is having right child i.e. successor will be min
+        # in right tree
+        if node.right is not None:
+            return self.getMin(node.right)
+
+        # the node doesn't have any right child, so we come from the root
+        # and see where the last left turn takes in order to reach to
+        # the 'node'
+        successor = None
+
+        while (root is not None):
+
+            if node.data < root.data:
+                successor = root  # successor is still at function scope
+                root = root.left
+            elif node.data > root.data:
+                root = root.right
+            else:
+                break
+        return successor
+
+    def search_using_data(self, root, data):
+        if not root:
+            return root
+        if root.data < data:
+            return self.search_using_data(root.right, data)
+        elif data < root.data:
+            return self.search_using_data(root.left, data)
+        else:
+            return root
+
 
 if __name__ == '__main__':
     BSTree = BST()
@@ -95,12 +127,22 @@ if __name__ == '__main__':
 
     print 'the inorder traversal is\n'
     BSTree.inorder_rec(root)
+    print
 
     val = input('enter node value which you want to delete\n')
     BSTree.remove(root, val)
 
+    print
     print 'inorder after deleting ', val, '\n'
     BSTree.inorder_rec(root)
+
+    print
+    inp = input('enter the node whose inorder successor you want\n')
+    inpNode = BSTree.search_using_data(root, inp)
+    suc = BSTree.get_inorder_successor(root, inpNode)
+    print
+    print 'inorder successor of ', inp, 'is ', suc.data, '\n'
+
 
 # working test case:
 # 50, 40, 70, 30, 45, 65, 90, 10, 35, 42, 48, 60, 68, 80, 55, 69
