@@ -13,6 +13,13 @@ then their parent node's children will get swapped
 '''
 
 
+'''
+this method isn't returning the root, because the root has been passed as
+reference (actually by value, where the value passed is reference itself)
+Also, note that I am not rebinding the object here
+'''
+
+
 def getMirrorTree(root):
     if not root:
         return
