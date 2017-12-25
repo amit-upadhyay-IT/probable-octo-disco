@@ -66,3 +66,5 @@ if __name__ == '__main__':
     BSTree.inorder_rec(root)
 
 # time complexity = O(n^2)
+# One test case example: inorder - 8, 4, 2, 5, 1, 6, 3, 7
+# postorder - 8, 4, 5, 2, 6, 7, 3, 1
