@@ -62,22 +62,24 @@ class BST:
         elif data > root.data:
             root.right = self.remove(root.right, data)
 
-        # if both the above condition doesn't match then definitely we have found element
+        # if both the above condition doesn't match then
+        # definitely we have found element
         else:
             # here we can have three different cases, case 1: leaf node found
             if not root.left and not root.right:
-                # here we don't have to explicitly remove the memory pointed by root, because python is smart enough to take care of that
+                # here we don't have to explicitly remove the memory pointed
+                # by root, because python is smart enough to take care of that
                 root = None
 
             # case 2: has one child
-            elif root.left:
+            elif root.right is None:
                 root = root.left
-            elif root.right:
+            elif root.left is None:
                 root = root.right
 
             # case 3: has both child
             else:
-                inorderSuccessor = self.getMin(root)
+                inorderSuccessor = self.getMin(root.right)
                 root.data = inorderSuccessor.data
                 root.right = self.remove(root.right, inorderSuccessor.data)
 
@@ -88,7 +90,6 @@ if __name__ == '__main__':
     BSTree = BST()
     root = None
     inp = input('enter node data, comma separated\n')
-    print inp
     for i in inp:
         root = BSTree.insert(root, i)
 
