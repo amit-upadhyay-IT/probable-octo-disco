@@ -1,15 +1,45 @@
 import bst
 
 
+def checkElementPresence(root, val1, val2):
+    temp = root
+    found1 = False
+    while (temp):
+        if val1 < temp.data:
+            temp = temp.left
+        elif val1 > temp.data:
+            temp = temp.right
+        else:
+            found1 = True
+            break
+    temp = root
+    found2 = False
+    while (temp):
+        if val2 < temp.data:
+            temp = temp.left
+        elif val2 > temp.data:
+            temp = temp.right
+        else:
+            found2 = True
+            break
+
+    return found1 and found2
+
+
 def getLCA(root, val1, val2):
+    res = None
     while root is not None:
         if val1 < root.data and val2 < root.data:
             root = root.left
         elif val1 > root.data and val2 > root.data:
             root = root.right
         else:
+            if checkElementPresence(root, val1, val2):
+                res = root
+            else:
+                res = None
             break
-    return root
+    return res
 
 
 def getLCA_rec(root, val1, val2):
@@ -40,5 +70,12 @@ if __name__ == '__main__':
         print 'no lca found\n'
 
 
-# time complexity = O(height), in worst case the height may go upto n
+# time complexity = O(height), in worst case the height may go upto n,
+# the complexity for iterative lca is O(height) + O(height), because there
+# I am taking care of the fact the elements entered (whose lca is to be found)
+# might not be present in the binary tree, in that case desired output is
+# different then output coming.
+# the recursive lca function is assuming that the elements being queried are
+# present in the tree
+
 # space complexity = O(height), for recursion stack
