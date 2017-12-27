@@ -13,19 +13,20 @@ def constructDLL(root):
         # (but only if we consider the tree as BST)
         while lstDLL.right:
             lstDLL = lstDLL.right
-        # also we need to store the head as the right pointer of the lstDLL, so
-        lstDLL.right = root  # root is the head, so we make it point to root
-        root.left = lstDLL  # since, this is DLL, so we need both pointer to
-        # point at each other
+        # once you get the rightmost element then we have to make the right
+        # pointer of it point to the root
+        lstDLL.right = root
+        # again as its a DLL, so root's left pointer must point back to leftDLL
+        root.left = lstDLL
 
     if root.right:
         rstDLL = constructDLL(root.right)
         # in this case we need to go the extreme left
         while rstDLL.left:
             rstDLL = rstDLL.left
-        # this time we don;t have to store the root (i.e. head ptr), rather we
-        # need to store the tail into the left pointer which is storing head
-        rstDLL.left = root  # root is the tail in this case
+        # in this case we want the leftmost node to point to the root
+        # so basically the next two lines are doing function of linking lists
+        rstDLL.left = root
         root.right = rstDLL
 
     return root
@@ -54,8 +55,8 @@ if __name__ == '__main__':
 
     printDLL(root)
 
-# time complexity = O(n)
-# its like T(n) = 2T(n/2) + O(1)
-# O(1) is time taken to merge the different lists, we are not doing the merge
-# explicitly
+# time complexity = O(n^2)
+# its like T(n) = 2T(n/2) + O(n)
+# O(n) is time taken to merge the different lists as we are traversing the DLL
+# and going to end (or front) of it
 # space complexity = O(1)
