@@ -47,7 +47,15 @@ if __name__ == '__main__':
 
     root = constructDLL(root)
 
+    # root now points to the actual root, which would be somewhere at center,
+    # but for printing the DLL we want the left most node, so we go there
     while root.left is not None:
         root = root.left
 
     printDLL(root)
+
+# time complexity = O(n)
+# its like T(n) = 2T(n/2) + O(1)
+# O(1) is time taken to merge the different lists, we are not doing the merge
+# explicitly
+# space complexity = O(1)
