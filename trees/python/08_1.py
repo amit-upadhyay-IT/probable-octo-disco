@@ -35,7 +35,7 @@ def printDLL(head):
     temp = head
     while temp:
         print temp.data,
-        temp = temp.left
+        temp = temp.right
 
 
 if __name__ == '__main__':
@@ -45,6 +45,9 @@ if __name__ == '__main__':
     for i in inp:
         root = BSTree.insert(root, i)
 
-    constructDLL(root)
+    root = constructDLL(root)
+
+    while root.left is not None:
+        root = root.left
 
     printDLL(root)
