@@ -10,7 +10,7 @@ def getMax(arr):
 
 def getLISlength(arr):
 
-    # the first element in the arr will always have 1 as the LIC, and rest of
+    # the first element in the arr will always have 1 as the LIS, and rest of
     # elements will atleast be 1, so initializing them with 1
 
     lis = [1, ]*len(arr)
@@ -25,7 +25,7 @@ def getLISlength(arr):
 
 
 if __name__ == '__main__':
-    arr = [2, 10, 13, 5, 3, 11, 12]
+    arr = [2, 3, 1, 5, 12, 10, 11]
     print getLISlength(arr)
 
 # time complexity = O(n^2)
