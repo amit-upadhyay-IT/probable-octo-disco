@@ -15,7 +15,9 @@ def printNextGreater(arr):
 
             nextEle = arr[i]
             topEle = stack[len(stack)-1]
-            stack.pop()
+            stack.pop()  # here I am explicitly popping out the topEle,
+            # so I would even need to push it back to stack if I would topEle
+            # is greater than the nextEle
 
             while topEle < nextEle:
                 print topEle, '->', nextEle
