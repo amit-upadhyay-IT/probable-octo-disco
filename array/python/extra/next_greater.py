@@ -9,29 +9,42 @@ def printNextGreater(arr):
     # insert the first element in the stack
     stack.append(arr[0])
 
-    # run a loop for processing next elements
     for i in range(1, len(arr)):
-        # check if stack is empty or not, if not empty then process
+
         if len(stack) > 0:
-            # check if the upcoming element is greater or not
-            while arr[i] > stack[0]:
-                ele = stack.pop()
-                print ele, '->', arr[i]
-                if len(stack) <= 0:
+
+            nextEle = arr[i]
+            topEle = stack[len(stack)-1]
+            stack.pop()
+
+            while topEle < nextEle:
+                print topEle, '->', nextEle
+                if len(stack) == 0:
                     break
-            else:  # arr[i] < stack top
-                stack.append(arr[i])
+                topEle = stack[len(stack)-1]
+                stack.pop()
+            # else:
+            #     print nextEle
+            #     stack.append(nextEle)
 
-        else:  # stack is empty n
-            stack.append(arr[i])
+            if topEle > nextEle:
+                stack.append(topEle)
 
-    # elements available in stack doesn't have any greater element
-    while len(stack) > 0:
-        ele = stack.pop()
-        print ele, '->', 'null'
+        stack.append(arr[i])
+
+    while (len(stack) > 0):
+        print stack.pop(), '-> null'
 
 
 if __name__ == '__main__':
     inp = input('enter elements separated by ,\n')
     inp = list(inp)
     printNextGreater(inp)
+
+# time complexity = O(n)
+# space complexity = O(n), for stack
+
+# NOTE: I don't think this problem of finding the next greater element in array
+# can be solved using BST in nlogn time. Problem like finding the next minimum
+# element in array or find the smallest element to right can perhaps be solved
+# using the BST in nlogn time
