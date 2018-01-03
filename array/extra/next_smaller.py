@@ -34,7 +34,15 @@ if __name__ == '__main__':
 '''
 How it works
 
-This works because whenever we add an item to the stack, we know its value is greater or equal to every element in the stack already. When we visit an element in the array, we know that if it's lower than any item in the stack, it must be lower than the last item in the stack, because the last item must be the largest. So we don't need to do any kind of search on the stack, we can just consider the last item.
+This works because whenever we add an item to the stack, we know its value is
+greater or equal to every element in the stack already. When we visit an
+element in the array, we know that if it's lower than any item in the stack, it
+must be lower than the last item in the stack, because the last item must be
+the largest. So we don't need to do any kind of search on the stack, we can just
+consider the last item.
 
-Note: You can skip the initialization step so long as you add a final step to empty the stack and use each remaining index to set the corresponding output array element to -1. It's just easier in Python to initialize it to -1s when creating it.
+Note: You can skip the initialization step so long as you add a final step to
+empty the stack and use each remaining index to set the corresponding output
+array element to -1. It's just easier in Python to initialize it to -1s when
+creating it.
 '''
