@@ -21,7 +21,7 @@ def mergeList(res, list1, list2):
         else:  # list1[i] > list2[j] and i < j (not actually, but as far as the
             # elements are considered to be in original array), we can say that
             # the index of element in list1 would be less than that of list2
-            invCnt += len(list1) - i
+            invCnt += len(list1) - i  # I need to add mid-i, & mid = len(list1)
             res[k] = list2[j]
             j += 1
             k += 1
@@ -45,9 +45,11 @@ def mergeSort(arr):
         return 0
     else:
         mid = len(arr)/2
-        invCount += mergeSort(arr[:mid])
-        invCount += mergeSort(arr[mid:])
-        invCount += mergeList(arr, arr[:mid], arr[mid:])
+        left = arr[:mid]
+        right = arr[mid:]
+        invCount += mergeSort(left)
+        invCount += mergeSort(right)
+        invCount += mergeList(arr, left, right)
     return invCount
 
 
