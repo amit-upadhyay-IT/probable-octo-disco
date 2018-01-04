@@ -1,5 +1,5 @@
 def mergeList(arr, pos, res, start, mid, end):
-    temp = [0]*1000
+    temp = [0]*len(arr)
     for i in range(start, end+1):
         temp[i] = pos[i]
 
