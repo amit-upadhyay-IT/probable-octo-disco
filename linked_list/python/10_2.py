@@ -47,33 +47,40 @@ def printME(head):
 def mergeSortedLinkedList(list1,  list2):
     # function should return one pointer which should be head of sorted ll
 
-    temp1, temp2 = list1.head, list2.head
+    l1, l2 = list1.head, list2.head
+    temp = None  # used for pointing to the last updated node
 
     mainHead = None
     # setting head
-    if temp1.data < temp2.data:
-        mainHead = temp1
+    if l1.data < l2.data:
+        mainHead = l1
+        l1 = l1.link  # since we worked upon temp1, so incremening it
     else:
-        mainHead = temp2
+        mainHead = l2
+        l2 = l2.link
 
-    while (temp1 and temp2):
-        if temp1.data < temp2.data:
-            v = temp1.link
-            temp1.link = temp2
-            temp2 = v
-            temp1 = temp1.link
+    temp = mainHead
+
+    while (l1 and l2):
+        if l1.data < l2.data:
+            temp.link = l1  # joining the smaller node
+            l1 = l1.link
+            temp = temp.link
 
         else:
-            v = temp2.link
-            temp2.link = temp1
-            temp1 = v
-            temp2 = temp2.link
+            temp.link = l2
+            l2 = l2.link
+            temp = temp.link
+
+    # appending the remaining part
+    temp.link = l1 if l1 else l2
 
     return mainHead
 
 
 if __name__ == '__main__':
     linkedList1 = LinkedList(None)
+    linkedList1.insertAtBeginning(18)
     linkedList1.insertAtBeginning(7)
     linkedList1.insertAtBeginning(5)
     linkedList1.insertAtBeginning(3)
@@ -81,9 +88,13 @@ if __name__ == '__main__':
     # linkedList1 = 3->5->7
 
     linkedList2 = LinkedList(None)
+    linkedList2.insertAtBeginning(14)
+    linkedList2.insertAtBeginning(12)
     linkedList2.insertAtBeginning(8)
     linkedList2.insertAtBeginning(6)
     linkedList2.insertAtBeginning(4)
+    linkedList2.insertAtBeginning(2)
+    linkedList2.insertAtBeginning(1)
 
     # linkedList2 = 4->6->8
 
