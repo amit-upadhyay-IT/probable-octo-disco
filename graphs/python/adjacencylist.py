@@ -6,6 +6,7 @@ from __future__ import print_function
 
 class Node:
 
+    # the identity of a node is vertex, weight and next_node address
     def __init__(self, v, w, next_node=None):
         self.v = v
         self.w = w
@@ -14,7 +15,7 @@ class Node:
 
 class LinkedList:
 
-    # head is refering to the top node in the LinkedList
+    # head is refering to the top node in the LinkedList, head is the identity
     def __init__(self, head=None):
         self.head = head
 
@@ -36,6 +37,7 @@ class LinkedList:
 class Graph:
 
     # nodeDic is a dictionary where we map the node value to adjacency list
+    # the dictionary is the only identity of the graph
     def __init__(self, nodeDic=None):
         self.nodeDic = nodeDic
 
@@ -61,11 +63,11 @@ if __name__ == '__main__':
     graph = Graph(dict())
     graph.add_edge('a', 'b', 1)
     graph.add_edge('a', 'd', 1)
-    graph.add_edge('b', 'a', 1)
+    graph.add_edge('b', 'a', 3)
     graph.add_edge('b', 'c', 1)
     graph.add_edge('c', 'b', 1)
-    graph.add_edge('c', 'd', 1)
+    graph.add_edge('c', 'd', 5)
     graph.add_edge('d', 'c', 1)
-    graph.add_edge('d', 'a', 1)
+    graph.add_edge('d', 'a', 6)
 
     graph.print_graph()
