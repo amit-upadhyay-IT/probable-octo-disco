@@ -31,11 +31,12 @@ if __name__ == '__main__':
     for i in inp:
         root = BSTree.insert(root, i)
 
-    key = input('enter distance from the root\n')
+    k = input('enter distance from the root\n')
 
     dist = 0
-    printNodesAtK(root, dist, key)
+    printNodesAtK(root, dist, k)
 
 
 # time = number of nodes visited, i.e. 2^k where k is distance given
 # why? coz - 1+2+4+8+2^k-1 = 2^k, in worst case it is same as O(n)
+# space = height of recursion stack, i.e. O(k)
