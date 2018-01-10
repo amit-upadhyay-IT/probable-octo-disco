@@ -25,7 +25,7 @@ def getDiamter(root, diam):
     rightheight = getDiamter(root.right, diam)
     diam.diameter = max(diam.diameter, leftheight+rightheight)
     print diam.diameter
-    return 1+max(leftheight, rightheight)
+    return 1+max(leftheight, rightheight)  # returning the height for the node
 
 
 if __name__ == '__main__':
@@ -38,3 +38,5 @@ if __name__ == '__main__':
     diam = Diam(0)
     getDiamter(root, diam)
     print 'diameter - ', diam.diameter
+
+# time = O(n)
