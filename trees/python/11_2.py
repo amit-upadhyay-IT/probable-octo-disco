@@ -49,5 +49,5 @@ if __name__ == '__main__':
 
     modifiedLevelOrder(root, key)
 
-# time complexity = O(n)
-# space complexity = O(n), if worst case queue size may grow upto n/2 (i.e. 2^h)
+# time complexity = O(2^k), in worst case its O(n)
+# space = O(k)
