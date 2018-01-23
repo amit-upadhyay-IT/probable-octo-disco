@@ -1,6 +1,6 @@
 # number occurring odd  times
 
-li = [1, 2, 3, 5, 4, 6, 8, 1, 2, 3, 5, 6, 7, 8]
+li = [1, 2, 3, 5, 4, 6, 8, 1, 2, 3, 5, 6, 8]
 
 
 def getOddOccurred(li):
@@ -11,4 +11,4 @@ def getOddOccurred(li):
     return res
 
 
-print "%d" % getOddOccurred(li)
+print getOddOccurred(li)
