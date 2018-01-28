@@ -56,6 +56,7 @@ class DiGraph(Gr):
         return len(self.vertices_set)
 
     # prints the elements in topological sorted manner
+    # time = O(V*E + V), we can optimize this time by adding some other ds
     def topological_sort(self):
         print '\ntopological sort:'
         # run a loop untill graph is not empty
@@ -126,5 +127,4 @@ if __name__ == '__main__':
     digraph.add_edge('v4', 'v3', 1)
 
     digraph.print_graph()
-    print
     digraph.topological_sort()
