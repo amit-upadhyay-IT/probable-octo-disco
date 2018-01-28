@@ -23,20 +23,58 @@ class Gr(object):
             lis = self.node_dic[key]
             print key, '->', [str(i.vertex)+':'+str(i.weight) for i in lis]
 
+
+# directed graph
+class DiGraph(Gr):
+
+    def __init__(self, node_dic=None):
+        # calling the parent class constructor
+        Gr.__init__(self, node_dic)
+        # using a set to keep the count of vertices in graph
+        self.vertices_set = set()
+
+    # this method adds the edge b/w src node to dest node with specified weight
+    def add_edge(self, src, dest, weight):
+        # check if src is present in node_dic or not
+        if src in self.node_dic:
+            # since it's present so get the list from map
+            lis = self.node_dic.get(src)
+            # now add the destination in the list for node src
+            lis.append(Node(dest, weight))
+        else:
+            # as the src wasn't present in dictionary, so add it
+            self.node_dic[src] = [Node(dest, weight)]
+        # why do I need to use extra memory for set to keep the count of
+        # vertices in graph?
+        # as in directed graph, we can have nodes with some indegree but zero
+        # out-degree, so for that case we don't create an entry in node_dic
+        # thus we miss out that vertex in the count, so I use a set here
+        self.vertices_set.add(src)
+        self.vertices_set.add(dest)
+
+    def vertices_count(self):
+        return len(self.vertices_set)
+
     # prints the elements in topological sorted manner
     def topological_sort(self):
+        print '\ntopological sort:'
         # run a loop untill graph is not empty
         while True:
             # get the node with indegree as zero
-            for k in list(self.node_dic):
+            for k in list(self.vertices_set):
                 # check if conde containing k has indegree zero or not
                 ret = self.check_vertex(k)
                 if ret is not None:
                     # it's the node with indegree as zero
-                    print k
+                    print k,
                     # now delete the entry containing k from dictionary
-                    del self.node_dic[k]
-            if len(self.node_dic) <= 0:
+                    # note only delete if k is present in dic, otherwise you
+                    # will face KeyError, checking will be constant time work
+                    if k in self.node_dic:
+                        del self.node_dic[k]
+                    # also remove from the set
+                    self.vertices_set.remove(k)
+            if len(self.vertices_set) <= 0:
                     break
 
     # check if node containing 'v' has indegree zero or not
@@ -62,38 +100,6 @@ class Gr(object):
             return v  # itnicates node containing v has indegree as zero
         else:
             return None
-
-
-# directed graph
-class DiGraph(Gr):
-
-    def __init__(self, node_dic=None):
-        # calling the parent class constructor
-        Gr.__init__(self, node_dic)
-        # using a set to keep the count of vertices in graph
-        self.vertex_cnt = set()
-
-    # this method adds the edge b/w src node to dest node with specified weight
-    def add_edge(self, src, dest, weight):
-        # check if src is present in node_dic or not
-        if src in self.node_dic:
-            # since it's present so get the list from map
-            lis = self.node_dic.get(src)
-            # now add the destination in the list for node src
-            lis.append(Node(dest, weight))
-        else:
-            # as the src wasn't present in dictionary, so add it
-            self.node_dic[src] = [Node(dest, weight)]
-        # why do I need to use extra memory for set to keep the count of
-        # vertices in graph?
-        # as in directed graph, we can have nodes with some indegree but zero
-        # out-degree, so for that case we don't create an entry in node_dic
-        # thus we miss out that vertex in the count, so I use a set here
-        self.vertex_cnt.add(src)
-        self.vertex_cnt.add(dest)
-
-    def vertices_count(self):
-        return len(self.vertex_cnt)
 
 
 '''
