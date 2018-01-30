@@ -56,7 +56,13 @@ class DiGraph(Gr):
         return len(self.vertices_set)
 
     # prints the elements in topological sorted manner
-    # time = O(V*E + V), we can optimize this time by adding some other ds
+    # time = O(V*E),
+    # Since, this implementation of adjacency list is done using lists of dict
+    # so, the time complexity comes to O(EV), if I would have implemented the
+    # graph using dictionary of dictionary, then this same approach will result
+    # in O(V*V) time, as searching over the list time will get reducted
+    # Even in the implementation of adjacency list we can improve time by using
+    # queue
     def topological_sort(self):
         print '\ntopological sort:'
         # run a loop untill graph is not empty
