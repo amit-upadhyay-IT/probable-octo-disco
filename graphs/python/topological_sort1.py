@@ -114,9 +114,10 @@ class DiGraph(Gr):
       \  /
        v1
       /  \
-    v3    v4
+    v3<---v4
       \  /
        v6
+Each edge has downward direction
 '''
 
 

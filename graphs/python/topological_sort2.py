@@ -57,6 +57,7 @@ class DiGraph(Gr):
 
     # prints the elements in topological sorted manner
     # modified dft method
+    # the idea behind this algo is given here: https://youtu.be/n_yl2a6n7nM
     def topological_sort(self):
         # init a stack
         stack = list()
@@ -81,6 +82,8 @@ class DiGraph(Gr):
             for w in a_list:
                 if w in visited and visited[w] is False:
                     self.modified_dfs_for_top_sort(w, visited, stack)
+        # adding the vertex to stack here, because at this point of time the
+        # vertex v has no more vertices to visit in dfs fashion, so
         stack.append(v)
 
 
@@ -89,9 +92,10 @@ class DiGraph(Gr):
       \  /
        v1
       /  \
-    v3    v4
+    v3<---v4
       \  /
        v6
+Each edge has downward direction
 '''
 
 
