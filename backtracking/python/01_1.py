@@ -1,6 +1,16 @@
+from __future__ import print_function
+
+
+def indent(n):
+    for i in range(n):
+        print ('    ', end='')
+
+
 def permute(s, first, last):
+    indent(first)
+    print ('permute('+str(s)+','+str(first)+','+str(last)+')')
     if first == last:
-        print s
+        print (s)
     else:
         for i in range(first, last+1):
             # swap to get new permutation
@@ -15,5 +25,5 @@ def permute(s, first, last):
 
 
 if __name__ == '__main__':
-    a = 'abc'
+    a = raw_input('enter a string:\n')
     permute(a, 0, len(a)-1)
