@@ -6,6 +6,12 @@ def indent(n):
         print ('    ', end='')
 
 
+# don't take care of the fact that if letters repeate in the input string
+# then multiple permutation will repeat in the output
+# To solve this casually you can use a set and see if set already contains
+# that combination or not. If it is already present then don't print
+# However, the optimized approach would be not exploring those cases when
+# there is repeat in the permutation
 def permute(s, first, last):
     indent(first)
     print ('permute('+str(s)+','+str(first)+','+str(last)+')')
