@@ -1,6 +1,3 @@
-import copy
-
-
 def permutationStr(s, prefix, s_set):
     if len(s) == 0:
         s_set.add(prefix)
@@ -10,8 +7,14 @@ def permutationStr(s, prefix, s_set):
 
 
 def permutationList(arr, start, s_set):
-    if start == len(arr):
-        s_set.add(copy.copy(arr))
+    flag = True
+    # check if arr is in increasing order or not
+    for i in xrange(0, len(arr)-1):
+        if arr[i] > arr[i+1]:
+            flag = False
+    # check if the start has become equals to length of arr or not
+    if flag is True and start == len(arr):
+        print arr
     else:
         for i in xrange(start, len(arr)):
             arr[start], arr[i] = arr[i], arr[start]
@@ -20,7 +23,6 @@ def permutationList(arr, start, s_set):
 
 
 if __name__ == '__main__':
-    arr = [1, 2, 3]
+    arr = [10, 1, 5, 3]
     s_set = set()
     permutationList(arr, 0, s_set)
-    print s_set
