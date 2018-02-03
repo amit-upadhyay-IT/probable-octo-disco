@@ -7,9 +7,10 @@ def count_it(li, ind):
     if li[ind] == 0:
         return 0
     else:
-        val = count_it(li, ind+1)
-        val = val + 1
-        return val
+        # val = count_it(li, ind+1)
+        # val = val + 1
+        # return val
+        return 1 + count_it(li, ind+1)
 
 
 if __name__ == '__main__':
