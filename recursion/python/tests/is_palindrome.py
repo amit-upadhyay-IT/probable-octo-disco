@@ -1,4 +1,5 @@
 def is_palindome(s, first, last):
+    s = s.lower()
     if s[first] != s[last]:
         return False
     elif first >= last:
@@ -8,6 +9,7 @@ def is_palindome(s, first, last):
 
 
 def is_palin(s):
+    s = s.lower()
     if len(s) < 2:
         return True
     else:
@@ -26,7 +28,7 @@ if __name__ == '__main__':
     else:
         print 'no'
 
-    s = 'asdfdsa'
+    s = 'Step on no pETs'
     if is_palin(s):
         print 'yes'
     else:
