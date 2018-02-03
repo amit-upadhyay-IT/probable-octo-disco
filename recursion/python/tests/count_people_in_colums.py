@@ -8,8 +8,8 @@ def count_it(li, ind):
         return 0
     else:
         # val = count_it(li, ind+1)
-        # val = val + 1
-        # return val
+        # val = val + 1  # backtracking
+        # return val  # backtracking
         return 1 + count_it(li, ind+1)
 
 
