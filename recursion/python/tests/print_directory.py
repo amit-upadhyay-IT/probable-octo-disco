@@ -14,10 +14,10 @@ def indent(n):
 
 def crawl(filename, indent):
     # indent(indent_cnt)
-    # base case, when we encounter a file path we should be printing it
     print (indent, os.path.basename(filename))
+    # base case, when we encounter a file path we should be printing it
     if os.path.isfile(filename):
-        filename = filename.lstrip('/')
+        pass
     else:
         # since, its a directory so do recusive call
         # a dir can have file and sub dirs into it, so call crawl on all
