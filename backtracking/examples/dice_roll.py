@@ -8,7 +8,7 @@ values that could appear on the dice.
 def dice_roll(n, prefix):
     # base case, i.e. n goes down to 0
     if n == 0:
-        print prefix
+        print prefix.rstrip(',')  # for stripping out the righmost ,
     else:
         # call the same function 6 times with each possible value of prefix
         for i in range(1, 7):
@@ -16,4 +16,4 @@ def dice_roll(n, prefix):
 
 
 if __name__ == '__main__':
-    dice_roll(2, '')
+    dice_roll(6, '')
