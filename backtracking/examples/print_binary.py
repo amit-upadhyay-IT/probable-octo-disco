@@ -24,7 +24,15 @@ So, if you see the tree above, the possiblities are:
 '''
 
 
+def indent(n):
+    for i in xrange(n):
+        print '    ',
+
+
 def print_binary(n, prefix):
+    indent(len(prefix))  # indentation purpose i.e. for better understanding
+    # printing the call stack
+    print 'print_binary(', n, ',', prefix, ')'
     # base case, when n becomes 0 i.e. prefix will have length = actual n
     if n == 0:
         print prefix
