@@ -3,24 +3,31 @@ def indent(n):
         print '    ',
 
 
+cnt = 0
+
+
 def permute(arr, aux):
+    global cnt
     indent(len(aux))
     print 'permute(', arr, ',', aux, ')'
     if len(arr) == 0:
+        cnt += 1
         print aux
     else:
         for i in range(len(arr)):
             # choosing
             e = arr[i]
             aux.append(e)
-            arr.pop()  # removing the last element
+            arr.remove(e)
             # exploring
             permute(arr, aux)
             # un-choose
-            arr.append(e)
-            aux.pop()
+            arr.insert(i, e)  # appending at index before i
+            aux.pop()  # removing from the end
 
 
 if __name__ == '__main__':
-    arr = [23, 12, 11, 6]
-    permute(arr, list())
+    arr = ['a', 'b', 'c', 'd']
+    aux = []
+    permute(arr, aux)
+    print '\n', cnt
