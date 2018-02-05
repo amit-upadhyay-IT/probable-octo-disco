@@ -4,8 +4,16 @@
 
 int cnt = 0;
 
+void indent(int n)
+{
+    for (int i = 0; i < n; ++i)
+        std::cout<<"    ";
+}
+
 void permute_string_helper(std::string str, std::string chosen, std::set<std::string> &seti)
 {
+    indent(chosen.length());
+    std::cout<<"permute_string_helper("<<str<<", "<<chosen<<")"<<std::endl;
     // base case
     if (str.length() == 0)
     {
