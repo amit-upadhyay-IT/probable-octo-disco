@@ -103,13 +103,13 @@ class MaxHeap(Heap):
             # there may be disordering in the child somewhere, so check them
             self.max_heapify(largest)
 
-        # constructs the MaxHeap
-        def build_maxheap(self):
-            # start from the last non-leaf and go upto 1 and at each step
-            # heapify
-            for i in xrange(self.heap_size/2, 0, -1):
-                self.max_heapify(i)
+    # constructs the MaxHeap
+    def build_maxheap(self):
+        # start from the last non-leaf and go upto 1 and at each step
+        # heapify
+        for i in xrange(self.heap_size/2, 0, -1):
+            self.max_heapify(i)
 
-        # returns the max from MaxHeap
-        def get_max(self):
-            return self.heap_list[1]
+    # returns the max from MaxHeap
+    def get_max(self):
+        return self.heap_list[1]
