@@ -66,6 +66,60 @@ class MinHeap(Heap):
     def get_min(self):
         return self.heap_list[1]
 
+    # return the minimum from heap and also removes it, it returns None if
+    # the heapsize if less than 1, time complexity = O(log2(n))
+    def extract_min(self):
+        # store the root somewhere, replace root with last element in heap and
+        # heapify
+        if self.heap_size < 1:
+            print 'Heap Underflow'
+            return None
+        # extract min
+        min_element = self.heap_list[1]
+        # replace the minimum
+        self.heap_list[1] = self.heap_list[self.heap_size]
+        # now decrease the heap size
+        self.heap_size -= 1
+        # now heapify about the root, coz there might be disturbance in root
+        self.min_heapify(1)
+        # return minimum
+        return min_element
+
+    # increase the value at index passed in arg, time complexity = O(log2(n))
+    def increase_key(self, index, value):
+        # check if new value is greater than previous value
+        if value <= self.heap_list[index]:
+            print 'The new value', value, 'is less than value present there', \
+                self.heap_list[index], 'kindly enter something proper\n'
+            return False
+        # set the value at given position
+        self.heap_list[index] = value
+        # as this is MinHeap and we've increased the value so there would be
+        # no effect on the parent nodes, so we just need to heapify about the
+        # index, so that all the nodes below index or at index get heapified
+        self.min_heapify(index)
+        # returning True to indicate that increase has been done successfully
+        return True
+
+    # decrease the value at given index, time complexity = O(log2(n))
+    def decrease_key(self, index, value):
+        # check passed value if lesser or not
+        if value >= self.heap_list[index]:
+            print 'The new value', value, 'is greater than value present \
+                there', self.heap_list[index], 'kindly enter a smaller value\n'
+            return False
+        # set the value
+        self.heap_list[index] = value
+        # as we have decreased the value so there might be effect on the parent
+        # thus go to each parent and see if it satify minheap property
+        while index > 1 and self.heap_list[index/2] > self.heap_list[index]:
+            # swap parent and child
+            self.heap_list[index/2], self.heap_list[index] = \
+                self.heap_list[index], self.heap_list[index/2]
+            index /= 2
+        # indicate that operation occurred successfully
+        return True
+
 
 class MaxHeap(Heap):
     # constructor
@@ -143,7 +197,7 @@ class MaxHeap(Heap):
         if value <= self.heap_list[index]:
             print 'The new value is less than element at', index,\
                 ' kindly enter a greater value\n'
-            return None
+            return False
         # set the value at index
         self.heap_list[index] = value
         # as we have increased the value at index, so property of MaxHeap will
@@ -156,6 +210,8 @@ class MaxHeap(Heap):
                 self.heap_list[index/2], self.heap_list[index]
             # change the index to index/2
             index /= 2
+        # returning True to indicate successful operation
+        return True
 
     # decreases the value at position 'index'
     # time complexity = O(log2(n))
@@ -164,12 +220,14 @@ class MaxHeap(Heap):
         if value >= self.heap_list[index]:
             print 'The new value is greater than element at', index,\
                 ' kindly enter a lesser value than', self.heap_list[index], '\n'
-            return None
+            return False
         # set the value at position index
         self.heap_list[index] = value
         # in this case there is not chance that the parent node will
         # get disturbed, so just call the max_heapify for the node at index i
         self.max_heapify(index)
+        # returning True to indicate successful opreation
+        return True
 
     # insert a key in MaxHeap, time complexity = O(log2(n))
     def insert_key(self, key):
