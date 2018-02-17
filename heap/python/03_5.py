@@ -1,10 +1,10 @@
-import minheap
+import heap
 
 
 def getKLargest(minHeap, sampleList, k):
     for i in range(k, len(sampleList), 1):
-        if minHeap.heapList[1] < sampleList[i]:
-            minHeap.heapList[1] = sampleList[i]
+        if minHeap.heap_list[1] < sampleList[i]:
+            minHeap.heap_list[1] = sampleList[i]
             minHeap.min_heapify(1)
 
     minHeap.print_heap()
@@ -16,7 +16,7 @@ if __name__ == '__main__':
     heapList = ['empty']
     for i in range(0, k, 1):
         heapList.append(sampleList[i])
-    minHeap = minheap.MinHeap(len(heapList)-1, heapList)
+    minHeap = heap.MinHeap(len(heapList)-1, heapList)
     minHeap.build_minheap()
     getKLargest(minHeap, sampleList, k)
 

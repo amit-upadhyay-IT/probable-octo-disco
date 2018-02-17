@@ -120,6 +120,22 @@ class MinHeap(Heap):
         # indicate that operation occurred successfully
         return True
 
+    # insert the key in the heap, time complexity = O(log2(n))
+    def insert_key(self, key):
+        # increase the heapsize
+        self.heap_size += 1
+        # put element there
+        self.heap_list[self.heap_size] = key
+        # get the last index
+        index = self.heap_size
+        # after the insertion the parent might get disturbed, so check for each
+        # parent in the path to root
+        while index > 1 and self.heap_list[index/2] > self.heap_list[index]:
+            # swap
+            self.heap_list[index/2], self.heap_list[index] = \
+                self.heap_list[index], self.heap_list[index/2]
+            index /= 2
+
 
 class MaxHeap(Heap):
     # constructor
