@@ -11,16 +11,16 @@ class Heap(object):
         self.heap_size = heap_size
         self.heap_list = heap_list
 
-    # print the heap indexed from 1 to n
-    def print_heap(self):
+    # print the heap indexed from 1 to n, if you want to print a particular
+    # attribute of the object stored in heap then while calling print_heap
+    # you can pass the attribute name as the argument, it will print the
+    # specifit property of the object in heap
+    def print_heap(self, attr_name=None):
         for i in xrange(1, self.heap_size + 1):
-            print self.heap_list[i]
-
-    # print the specifit property of the object in heap
-    def print_heap_attr(self, attr_name):
-        for i in xrange(1, self.heap_size + 1):
-            prop = getattr(self.heap_list[i], attr_name)
-            print prop
+            if attr_name is None:
+                print self.heap_list[i]
+            else:
+                print getattr(self.heap_list[i], attr_name)
 
 
 class MinHeap(Heap):
