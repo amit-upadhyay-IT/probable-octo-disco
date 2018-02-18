@@ -3,7 +3,7 @@ implementation of head as a abstract ds
 '''
 
 
-# parent class for MinHeap and MaxHeap, here the common utifity functions
+# parent class for MinHeap and MaxHeap, here the common utility functions
 # are implemented
 class Heap(object):
     # property of heap: a) heap_size and b) heap_list
@@ -15,6 +15,12 @@ class Heap(object):
     def print_heap(self):
         for i in xrange(1, self.heap_size + 1):
             print self.heap_list[i]
+
+    # print the specifit property of the object in heap
+    def print_heap_attr(self, attr_name):
+        for i in xrange(1, self.heap_size + 1):
+            prop = getattr(self.heap_list[i], attr_name)
+            print prop
 
 
 class MinHeap(Heap):
