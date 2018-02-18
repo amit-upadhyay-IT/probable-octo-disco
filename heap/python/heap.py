@@ -30,7 +30,7 @@ class MinHeap(Heap):
 
     # heapify the MinHeap on the index passed as the arg
     # the indexing here is starts from 1, time complexity = O(log2(n))
-    def min_heapify(self, i):
+    def min_heapify(self, i, attr_name=None):
         # step1: get the smallest among the left child, right child and root
         # step2: if root is not the smallest among three then swap appropriately
 
@@ -43,15 +43,26 @@ class MinHeap(Heap):
         smallest = -1
 
         # check if left is greater than root, also check the boundary of left
-        if left <= self.heap_size and self.heap_list[left] < self.heap_list[i]:
-            smallest = left
+        if attr_name is None:
+            if left <= self.heap_size and self.heap_list[left]\
+                    < self.heap_list[i]:
+                smallest = left
+            else:
+                smallest = i
         else:
-            smallest = i
+            if left <= self.heap_size and getattr(self.heap_list[left], attr_name) < getattr(self.heap_list[i], attr_name):
+                smallest = left
+            else:
+                smallest = i
 
         # check if right is smallerst or not, also check the boundary of right
-        if right <= self.heap_size and self.heap_list[right] < \
-                self.heap_list[smallest]:
-            smallest = right
+        if attr_name is None:
+            if right <= self.heap_size and self.heap_list[right] < \
+                    self.heap_list[smallest]:
+                smallest = right
+        else:
+            if right <= self.heap_size and getattr(self.heap_list[right], attr_name) < getattr(self.heap_list[smallest], attr_name):
+                smallest = right
 
         # step 2: if smallest is not the one at root, then you need to swap
         if smallest != i:
@@ -59,14 +70,15 @@ class MinHeap(Heap):
                 self.heap_list[i], self.heap_list[smallest]
             # after this swap there may be disordering somewhere in child
             # so again calling heapify over the smallest index
-            self.min_heapify(smallest)
+            self.min_heapify(smallest, attr_name)
 
     # constructs the minheap, time complexity = O(n)
-    def build_minheap(self):
+    # attr_name is the attribute of the object that is stored in the heap
+    def build_minheap(self, attr_name=None):
         # start from the last non-leaf index and go upto 1 and heapify at
         # each step
         for i in xrange(self.heap_size/2, 0, -1):
-            self.min_heapify(i)
+            self.min_heapify(i, attr_name)
 
     # returns the minimum element in the heap, time complexity = O(1)
     def get_min(self):
@@ -108,7 +120,7 @@ class MinHeap(Heap):
         return True
 
     # decrease the value at given index, time complexity = O(log2(n))
-    def decrease_key(self, index, value):
+    def decrease_key(self, index, value, attr_name=None):
         # check passed value if lesser or not
         if value >= self.heap_list[index]:
             print 'The new value', value, 'is greater than value present \
@@ -127,7 +139,7 @@ class MinHeap(Heap):
         return True
 
     # insert the key in the heap, time complexity = O(log2(n))
-    def insert_key(self, key):
+    def insert_key(self, key, attr_name=None):
         # increase the heapsize
         self.heap_size += 1
         # put element there
@@ -136,11 +148,20 @@ class MinHeap(Heap):
         index = self.heap_size
         # after the insertion the parent might get disturbed, so check for each
         # parent in the path to root
-        while index > 1 and self.heap_list[index/2] > self.heap_list[index]:
+        condition = False
+        if attr_name is None:
+            condition = self.heap_list[index/2] > self.heap_list[index]
+        else:
+            condition = getattr(self.heap_list[index/2], attr_name) > getattr(self.heap_list[index], attr_name)
+        while index > 1 and condition:
             # swap
             self.heap_list[index/2], self.heap_list[index] = \
                 self.heap_list[index], self.heap_list[index/2]
             index /= 2
+            if attr_name is None:
+                condition = self.heap_list[index/2] > self.heap_list[index]
+            else:
+                condition = getattr(self.heap_list[index/2], attr_name) > getattr(self.heap_list[index], attr_name)
 
 
 class MaxHeap(Heap):
