@@ -187,7 +187,7 @@ class MaxHeap(Heap):
 
         # step2: if root is not largest then you need to swap
         if largest != i:
-            self.heap_li[largest], self.heap_li[i] = \
+            self.heap_list[largest], self.heap_list[i] = \
                 self.heap_list[i], self.heap_list[largest]
             # there may be disordering in the child somewhere, so check them
             self.max_heapify(largest, attr_name)
