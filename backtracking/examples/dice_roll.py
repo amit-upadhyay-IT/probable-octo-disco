@@ -15,5 +15,18 @@ def dice_roll(n, prefix):
             dice_roll(n-1, prefix + str(i) + ',')
 
 
+def dice_roll2(n, lis):
+    if n == 0:
+        print lis
+    else:
+        for i in xrange(1, 7):
+            # choose
+            lis.append(i)
+            dice_roll2(n-1, lis)
+            lis.pop()  # removing from last
+
+
 if __name__ == '__main__':
-    dice_roll(6, '')
+    dice_roll(2, '')
+    print '-------------------'
+    dice_roll2(2, [])
