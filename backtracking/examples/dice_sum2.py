@@ -29,5 +29,4 @@ def dice_roll3(lis, desired_sum, sum_so_far):
 
 
 if __name__ == '__main__':
-    dice_roll3([], 8, 0)
-    print cnt
+    dice_roll2(2, [], 8, 0)
