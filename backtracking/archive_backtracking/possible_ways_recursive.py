@@ -1,6 +1,3 @@
-cnt = 0
-
-
 def possible_ways_helper(lis, desired_sum, sum_so_far, ways):
     if desired_sum == sum_so_far:
         ways[0] += 1
