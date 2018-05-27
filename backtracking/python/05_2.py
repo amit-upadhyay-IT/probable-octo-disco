@@ -5,24 +5,22 @@ def indent(n):
 
 
 def solve_maze_helper(mat, n, prefix, row, col, ind):
-    # indent(ind)
-    # print 'indent('+str(n)+','+str(prefix)+','+str(row)+','+str(col)+')'
-    # base case: when row or col reaches to n-1
-    if row == n-1 or col == n-1:
-        # print 'second case'
-        if (row == n-2 and col == n-1) or (row == n-1 and col == n-2):
-            # print '[0, 0]', prefix, '[' + str(n-1) + ', ' + str(n-1) + ']'
-            print prefix
-        return
+    indent(ind)
+    print 'indent('+str(n)+','+str(prefix)+','+str(row)+','+str(col)+')'
+    # base case: when row or col reaches to the desinations left or top
+    if (row == n-2 and col == n-1) or (row == n-1 and col == n-2):
+        prefix.insert(0, [0, 0])
+        prefix.append([n-1, n-1])
+        print 'Answer: ', prefix
     else:
         # check if rat can go to right side
-        if mat[row][col+1] == 1:
+        if (row < n and col+1 < n) and mat[row][col+1] == 1:
             # explore the branch
             prefix.append([row, col+1])  # choose
             solve_maze_helper(mat, n, prefix, row, col+1, ind+1)  # explore
             prefix.pop()  # un-choose
 
-        if mat[row+1][col] == 1:
+        if (row+1 < n and col < n) and mat[row+1][col] == 1:
             prefix.append([row+1, col])  # choose
             solve_maze_helper(mat, n, prefix, row+1, col, ind+1)  # explore
             prefix.pop()  # un-choose
