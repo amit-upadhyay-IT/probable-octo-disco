@@ -20,12 +20,25 @@ Also, note that I am not rebinding the object here
 '''
 
 
-def getMirrorTree(root):
+def indent(n):
+    for i in range(n):
+        print '   ',
+
+
+def getMirrorTree(root, inden):
+    indent(inden)
+    print 'getMirrorTree('+str(root)+')'
     if not root:
         return
-    getMirrorTree(root.left)
-    getMirrorTree(root.right)
+    if root.left is not None:
+        getMirrorTree(root.left, inden+1)
+    if root.right is not None:
+        getMirrorTree(root.right, inden+1)
     root.left, root.right = root.right, root.left
+
+
+def getMirror(root):
+    getMirrorTree(root, 0)
 
 
 if __name__ == '__main__':
@@ -39,10 +52,13 @@ if __name__ == '__main__':
     BSTree.inorder_rec(root)
     print
 
-    getMirrorTree(root)
+    getMirror(root)
 
     print
     print 'inorder traversal of mirror tree\n'
     BSTree.inorder_rec(root)
 
 # time complexity = O(n)
+# UPDATE: I have optimized the previous solution, previousily I was calling
+# the recursive function even when the root.left or root.right was None, this
+# was leading to the swapping of None and None.
