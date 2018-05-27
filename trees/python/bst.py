@@ -37,7 +37,13 @@ class BST:
         else:
             root.right = self.insert(root.right, data)
 
-        # returning the root
+        # this line gets executed in the last time when the insertin is done at
+        # proper place, thus I return the main root to the calling function
+        # which has the child appended in it. NOTE: most probably the client
+        # doesn't need to know about the root (as this is internal utility to
+        # bst), so without even getting the root as a parameter to function
+        # we can use self.root and update that, also in that case we don't need
+        # to return the root
         return root
 
     def getMin(self, root):
